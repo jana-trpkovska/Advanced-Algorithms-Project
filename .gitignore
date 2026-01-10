@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+
+# PyCharm files
+.idea/
+*.iml
+*.iws
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python logs
+*.log
+
+# Swap files
+*.swp
+
+# Ignore large temporary files
+*.h5.tmp
+*.pt.tmp
+*.ckpt.tmp

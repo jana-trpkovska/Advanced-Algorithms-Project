@@ -22,8 +22,11 @@ Thumbs.db
 # Swap files
 *.swp
 
-#Models
+# Models
 *.h5
+
+# Embedding files
+data/embeddings
 
 # Ignore large temporary files
 *.h5.tmp

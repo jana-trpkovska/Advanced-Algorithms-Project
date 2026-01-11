@@ -8,12 +8,15 @@ from src.training.load_data import load_tokenized_data
 
 base_dir = Path(__file__).resolve().parents[2]
 
+MODEL_VERSION = 3
 MODEL_DIR = base_dir / "src" / "models"
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
-MODEL_PATH = MODEL_DIR / "bilstm_model.h5"
+MODEL_PATH = MODEL_DIR / f"bilstm_model_v{MODEL_VERSION}.h5"
 
 
 def train():
+    print(f"Training BiLSTM model v{MODEL_VERSION}")
+
     X_train, _, y_train = load_tokenized_data("train")
     X_val, _, y_val = load_tokenized_data("val")
 
@@ -53,5 +56,4 @@ def train():
 
 
 if __name__ == "__main__":
-    print("Training model...")
     train()

@@ -3,8 +3,9 @@ from tensorflow.keras.models import load_model
 
 from src.training.load_data import load_tokenized_data
 
+MODEL_VERSION = 3
 base_dir = Path(__file__).resolve().parents[2]
-MODEL_PATH = base_dir / "src" / "models" / "bilstm_model.h5"
+MODEL_PATH = base_dir / "src" / "models" / f"bilstm_model_v{MODEL_VERSION}.h5"
 
 
 def evaluate():

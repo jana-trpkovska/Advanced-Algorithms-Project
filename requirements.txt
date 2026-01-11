@@ -4,3 +4,4 @@ scikit-learn
 transformers
 torch
 tensorflow
+tqdm

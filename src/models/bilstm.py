@@ -1,17 +1,13 @@
 import numpy as np
 from pathlib import Path
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import (
-    Input, Embedding, Bidirectional,
-    LSTM, Dense, Dropout,
-    LayerNormalization, Layer,
-    Permute, Multiply,
-    Lambda, Softmax)
+from tensorflow.keras.layers import Input, Embedding, Bidirectional, LSTM, Dense, Dropout, LayerNormalization
 from tensorflow.keras.metrics import Precision, Recall
 from tensorflow.keras.optimizers import Adam
 import pickle
 
-# Hyperparameters
+from src.models.attention_layer import Attention
+
 EMBEDDING_DIM = 300
 MAX_LENGTH = 128
 LSTM_UNITS_1 = 64
@@ -22,10 +18,12 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 TOKENIZER_PATH = BASE_DIR / "data" / "datasets" / "tokenized" / "tokenizer.pkl"
 EMBEDDING_MATRIX_PATH = BASE_DIR / "data" / "embeddings" / "embedding_matrix.npy"
 
+UNFREEZE_EMBEDDINGS = False
+
 
 def load_embedding_matrix():
     if not EMBEDDING_MATRIX_PATH.exists():
-        raise FileNotFoundError(f"Embedding matrix not found at {EMBEDDING_MATRIX_PATH}. ")
+        raise FileNotFoundError(f"Embedding matrix not found at {EMBEDDING_MATRIX_PATH}")
     print(f"Loading embedding matrix from {EMBEDDING_MATRIX_PATH} ...")
     return np.load(EMBEDDING_MATRIX_PATH)
 
@@ -40,25 +38,28 @@ def create_bilstm_model():
     embedding_matrix = load_embedding_matrix()
 
     input_ids = Input(shape=(MAX_LENGTH,), name="input_ids")
+
     x = Embedding(
         input_dim=vocab_size,
         output_dim=EMBEDDING_DIM,
         weights=[embedding_matrix],
-        trainable=False
+        trainable=UNFREEZE_EMBEDDINGS,
     )(input_ids)
 
     x = Bidirectional(LSTM(LSTM_UNITS_1, return_sequences=True))(x)
-    x = Bidirectional(LSTM(LSTM_UNITS_2, return_sequences=False))(x)
+    x = Bidirectional(LSTM(LSTM_UNITS_2, return_sequences=True))(x)
+    x = Attention()(x)
     x = LayerNormalization()(x)
     x = Dropout(DROPOUT_RATE)(x)
     x = Dense(64, activation="relu")(x)
     output = Dense(1, activation="sigmoid")(x)
 
     model = Model(inputs=input_ids, outputs=output)
+
     model.compile(
         loss="binary_crossentropy",
         optimizer=Adam(learning_rate=3e-4),
-        metrics=["accuracy", Precision(), Recall()]
+        metrics=["accuracy", Precision(), Recall()],
     )
 
     return model

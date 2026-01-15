@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from src.models.attention_layer import Attention
 
-MODEL_VERSION = 3
+MODEL_VERSION = 4
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / "src" / "models" / f"bilstm_model_v{MODEL_VERSION}.h5"
 TOKENIZED_DIR = BASE_DIR / "data" / "datasets" / "tokenized"

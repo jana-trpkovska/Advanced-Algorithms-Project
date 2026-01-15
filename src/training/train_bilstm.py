@@ -3,12 +3,12 @@ from pathlib import Path
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from tqdm.keras import TqdmCallback
 
-from src.models.bilstm import create_bilstm_model
+from src.models.bilstm import create_bilstm_model, unfreeze_embeddings
 from src.training.load_data import load_tokenized_data
 
 base_dir = Path(__file__).resolve().parents[2]
 
-MODEL_VERSION = 3
+MODEL_VERSION = 4
 MODEL_DIR = base_dir / "src" / "models"
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 MODEL_PATH = MODEL_DIR / f"bilstm_model_v{MODEL_VERSION}.h5"
@@ -23,6 +23,7 @@ def train():
     print("Training data shape:", X_train.shape)
     print("Validation data shape:", X_val.shape)
 
+    # First phase - frozen embeddings
     model = create_bilstm_model()
 
     early_stopping = EarlyStopping(
@@ -50,6 +51,18 @@ def train():
             checkpoint,
             tqdm_callback
         ]
+    )
+
+    # Second phase - unfreeze embeddings
+    model = unfreeze_embeddings(model)
+
+    model.fit(
+        X_train,
+        y_train,
+        validation_data=(X_val, y_val),
+        epochs=4,
+        batch_size=32,
+        callbacks=[early_stopping, checkpoint, tqdm_callback],
     )
 
     print(f"Best model saved to: {MODEL_PATH}")

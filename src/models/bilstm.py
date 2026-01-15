@@ -14,11 +14,12 @@ LSTM_UNITS_1 = 64
 LSTM_UNITS_2 = 32
 DROPOUT_RATE = 0.3
 
+INITIAL_LR = 3e-4
+UNFREEZE_LR = 1e-4
+
 BASE_DIR = Path(__file__).resolve().parents[2]
 TOKENIZER_PATH = BASE_DIR / "data" / "datasets" / "tokenized" / "tokenizer.pkl"
 EMBEDDING_MATRIX_PATH = BASE_DIR / "data" / "embeddings" / "embedding_matrix.npy"
-
-UNFREEZE_EMBEDDINGS = False
 
 
 def load_embedding_matrix():
@@ -43,7 +44,8 @@ def create_bilstm_model():
         input_dim=vocab_size,
         output_dim=EMBEDDING_DIM,
         weights=[embedding_matrix],
-        trainable=UNFREEZE_EMBEDDINGS,
+        trainable=False,
+        name="embedding_layer"
     )(input_ids)
 
     x = Bidirectional(LSTM(LSTM_UNITS_1, return_sequences=True))(x)
@@ -58,10 +60,24 @@ def create_bilstm_model():
 
     model.compile(
         loss="binary_crossentropy",
-        optimizer=Adam(learning_rate=3e-4),
+        optimizer=Adam(learning_rate=INITIAL_LR),
         metrics=["accuracy", Precision(), Recall()],
     )
 
+    return model
+
+
+def unfreeze_embeddings(model):
+    embedding_layer = model.get_layer("embedding_layer")
+    embedding_layer.trainable = True
+
+    model.compile(
+        loss="binary_crossentropy",
+        optimizer=Adam(learning_rate=UNFREEZE_LR),
+        metrics=["accuracy", Precision(), Recall()],
+    )
+
+    print("Embedding layer unfrozen")
     return model
 
 

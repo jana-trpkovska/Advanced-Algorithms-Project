@@ -2,9 +2,9 @@ from pathlib import Path
 from tensorflow.keras.models import load_model
 
 from src.training.load_data import load_tokenized_data
-from src.models.attention_layer import Attention
+from src.models.attention_layer import MultiHeadAttention
 
-MODEL_VERSION = 4
+MODEL_VERSION = 5
 base_dir = Path(__file__).resolve().parents[2]
 MODEL_PATH = base_dir / "src" / "models" / f"bilstm_model_v{MODEL_VERSION}.h5"
 
@@ -14,7 +14,7 @@ def evaluate():
 
     print("Test data shape:", X_test.shape)
 
-    model = load_model(MODEL_PATH, custom_objects={"Attention": Attention})
+    model = load_model(MODEL_PATH, custom_objects={"MultiHeadAttention": MultiHeadAttention})
 
     results = model.evaluate(X_test, y_test, verbose=1)
     loss, accuracy, precision, recall = results

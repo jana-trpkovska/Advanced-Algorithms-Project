@@ -1,12 +1,14 @@
 from pathlib import Path
 from tensorflow.keras.models import load_model
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 from src.training.load_data import load_tokenized_data
-from src.models.attention_layer import MultiHeadAttention
+from src.models.attention_layer import Attention
 
-MODEL_VERSION = 5
+MODEL_VERSION = 3
 base_dir = Path(__file__).resolve().parents[2]
 MODEL_PATH = base_dir / "src" / "models" / f"bilstm_model_v{MODEL_VERSION}.h5"
+BEST_THRESHOLD = 0.51  # after threshold tuning
 
 
 def evaluate():
@@ -14,16 +16,22 @@ def evaluate():
 
     print("Test data shape:", X_test.shape)
 
-    model = load_model(MODEL_PATH, custom_objects={"MultiHeadAttention": MultiHeadAttention})
+    model = load_model(MODEL_PATH, custom_objects={"Attention": Attention})
 
-    results = model.evaluate(X_test, y_test, verbose=1)
-    loss, accuracy, precision, recall = results
+    y_probs = model.predict(X_test, batch_size=32).flatten()
 
-    print("\nTest Results:")
-    print(f"Loss:      {loss:.4f}")
+    y_pred = (y_probs >= BEST_THRESHOLD).astype(int)
+
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred, zero_division=0)
+    recall = recall_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+
+    print("\nTest Results with threshold {:.2f}:".format(BEST_THRESHOLD))
     print(f"Accuracy:  {accuracy:.4f}")
     print(f"Precision: {precision:.4f}")
     print(f"Recall:    {recall:.4f}")
+    print(f"F1 Score:  {f1:.4f}")
 
 
 if __name__ == "__main__":

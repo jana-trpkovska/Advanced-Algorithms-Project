@@ -8,7 +8,7 @@ from src.training.load_data import load_tokenized_data
 
 base_dir = Path(__file__).resolve().parents[2]
 
-MODEL_VERSION = 5
+MODEL_VERSION = 3
 MODEL_DIR = base_dir / "src" / "models"
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 MODEL_PATH = MODEL_DIR / f"bilstm_model_v{MODEL_VERSION}.h5"
@@ -27,7 +27,7 @@ def train():
 
     early_stopping = EarlyStopping(
         monitor="val_loss",
-        patience=4,
+        patience=3,
         restore_best_weights=True
     )
 

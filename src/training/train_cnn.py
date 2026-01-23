@@ -1,0 +1,66 @@
+from pathlib import Path
+import numpy as np
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
+from tqdm.keras import TqdmCallback
+
+from src.models.cnn import create_cnn_model
+from src.training.load_data import load_tokenized_data
+
+MODEL_VERSION = 1
+BASE_DIR = Path(__file__).resolve().parents[2]
+MODEL_DIR = BASE_DIR / "src" / "models"
+MODEL_DIR.mkdir(parents=True, exist_ok=True)
+MODEL_PATH = MODEL_DIR / f"cnn_model_v{MODEL_VERSION}.h5"
+EMBEDDINGS_PATH = BASE_DIR / "data" / "embeddings" / "embedding_matrix.npy"
+
+
+def train():
+    print(f"Training CNN model v{MODEL_VERSION}")
+
+    X_train, _, y_train = load_tokenized_data("train")
+    X_val, _, y_val = load_tokenized_data("val")
+
+    embedding_matrix = np.load(EMBEDDINGS_PATH)
+
+    vocab_size, embedding_dim = embedding_matrix.shape
+    max_len = X_train.shape[1]
+
+    model = create_cnn_model(
+        vocab_size=vocab_size,
+        embedding_dim=embedding_dim,
+        embedding_matrix=embedding_matrix,
+        max_len=max_len,
+    )
+
+    model.summary()
+
+    early_stopping = EarlyStopping(
+        monitor="val_loss",
+        patience=3,
+        restore_best_weights=True,
+    )
+
+    checkpoint = ModelCheckpoint(
+        MODEL_PATH,
+        monitor="val_loss",
+        save_best_only=True,
+    )
+
+    model.fit(
+        X_train,
+        y_train,
+        validation_data=(X_val, y_val),
+        epochs=50,
+        batch_size=32,
+        callbacks=[
+            early_stopping,
+            checkpoint,
+            TqdmCallback(verbose=1),
+        ]
+    )
+
+    print(f"Best model saved to: {MODEL_PATH}")
+
+
+if __name__ == "__main__":
+    train()

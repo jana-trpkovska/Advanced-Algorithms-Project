@@ -10,7 +10,7 @@ def create_cnn_model(
         embedding_dim,
         embedding_matrix,
         max_len,
-        num_filters=128,
+        num_filters=256,
         kernel_sizes=(3, 4, 5),
         dropout_rate=0.5,
 ):
@@ -39,7 +39,7 @@ def create_cnn_model(
     x = Concatenate(name="concat")(conv_blocks)
 
     x = Dropout(dropout_rate, name="dropout")(x)
-    x = Dense(64, activation="relu", kernel_regularizer=l2(1e-4), name="dense")(x)
+    x = Dense(128, activation="relu", kernel_regularizer=l2(1e-4), name="dense")(x)
     outputs = Dense(1, activation="sigmoid", name="output")(x)
 
     model = Model(inputs=inputs, outputs=outputs)

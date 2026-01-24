@@ -2,16 +2,32 @@ from pathlib import Path
 import numpy as np
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from tqdm.keras import TqdmCallback
+from tensorflow.keras.optimizers import Adam
 
 from src.models.cnn import create_cnn_model
 from src.training.load_data import load_tokenized_data
 
-MODEL_VERSION = 1
+MODEL_VERSION = 2
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_DIR = BASE_DIR / "src" / "models"
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
 MODEL_PATH = MODEL_DIR / f"cnn_model_v{MODEL_VERSION}.h5"
 EMBEDDINGS_PATH = BASE_DIR / "data" / "embeddings" / "embedding_matrix.npy"
+
+
+def unfreeze_embeddings(model):
+    model.get_layer("embedding").trainable = True
+    model.compile(
+        optimizer=Adam(learning_rate=5e-4),
+        loss="binary_crossentropy",
+        metrics=[
+            "accuracy",
+            "precision",
+            "recall",
+        ],
+    )
+    print("Embeddings are now trainable.")
+    return model
 
 
 def train():
@@ -25,6 +41,7 @@ def train():
     vocab_size, embedding_dim = embedding_matrix.shape
     max_len = X_train.shape[1]
 
+    # Phase 1: frozen embeddings
     model = create_cnn_model(
         vocab_size=vocab_size,
         embedding_dim=embedding_dim,
@@ -57,6 +74,19 @@ def train():
             checkpoint,
             TqdmCallback(verbose=1),
         ]
+    )
+
+    # Phase 2: unfrozen embeddings
+    model = unfreeze_embeddings(model)
+
+    print("\nPhase 2: Fine-tuning with embeddings trainable")
+    model.fit(
+        X_train,
+        y_train,
+        validation_data=(X_val, y_val),
+        epochs=8,
+        batch_size=32,
+        callbacks=[early_stopping, checkpoint, TqdmCallback(verbose=1)],
     )
 
     print(f"Best model saved to: {MODEL_PATH}")

@@ -3,7 +3,7 @@ from tensorflow.keras.models import load_model
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 from src.training.load_data import load_tokenized_data
-from src.models.attention_layer import Attention
+from src.models.attention_layer_bilstm import Attention
 
 MODEL_VERSION = 3
 base_dir = Path(__file__).resolve().parents[2]

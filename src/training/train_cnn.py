@@ -7,7 +7,7 @@ from tensorflow.keras.optimizers import Adam
 from src.models.cnn import create_cnn_model
 from src.training.load_data import load_tokenized_data
 
-MODEL_VERSION = 3
+MODEL_VERSION = 4
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_DIR = BASE_DIR / "src" / "models"
 MODEL_DIR.mkdir(parents=True, exist_ok=True)

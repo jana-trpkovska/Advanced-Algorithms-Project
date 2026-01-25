@@ -6,7 +6,7 @@ from tensorflow.keras.metrics import Precision, Recall
 from tensorflow.keras.optimizers import Adam
 import pickle
 
-from src.models.attention_layer import Attention
+from src.models.attention_layer_bilstm import Attention
 
 EMBEDDING_DIM = 300
 MAX_LENGTH = 128

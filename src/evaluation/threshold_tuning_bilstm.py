@@ -2,7 +2,7 @@ from pathlib import Path
 import numpy as np
 from tensorflow.keras.models import load_model
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
-from src.models.attention_layer import Attention
+from src.models.attention_layer_bilstm import Attention
 
 MODEL_VERSION = 3
 BASE_DIR = Path(__file__).resolve().parents[2]

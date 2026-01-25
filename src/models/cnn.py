@@ -1,10 +1,8 @@
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Embedding, Conv1D, Dense, Dropout, Concatenate
+from tensorflow.keras.layers import Input, Embedding, Conv1D, GlobalMaxPooling1D, Dense, Dropout, Concatenate
 from tensorflow.keras.regularizers import l2
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.metrics import Precision, Recall
-
-from src.models.attention_layer_cnn import Attention
 
 
 def create_cnn_model(
@@ -35,8 +33,8 @@ def create_cnn_model(
             kernel_regularizer=l2(1e-4),
             name=f"conv_{k}",
         )(embedding)
-        att = Attention(name=f"att_{k}")(conv)
-        conv_blocks.append(att)
+        pooled = GlobalMaxPooling1D(name=f"pool_{k}")(conv)
+        conv_blocks.append(pooled)
 
     x = Concatenate(name="concat")(conv_blocks)
 

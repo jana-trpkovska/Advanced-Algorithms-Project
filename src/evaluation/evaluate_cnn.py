@@ -3,8 +3,9 @@ from tensorflow.keras.models import load_model
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 from src.training.load_data import load_tokenized_data
+from src.models.kmax_pooling_layer_cnn import KMaxPooling
 
-MODEL_VERSION = 5
+MODEL_VERSION = 6
 base_dir = Path(__file__).resolve().parents[2]
 MODEL_PATH = base_dir / "src" / "models" / f"cnn_model_v{MODEL_VERSION}.h5"
 BEST_THRESHOLD = 0.5
@@ -15,7 +16,7 @@ def evaluate():
 
     print("Test data shape:", X_test.shape)
 
-    model = load_model(MODEL_PATH)
+    model = load_model(MODEL_PATH, custom_objects={"KMaxPooling": KMaxPooling})
 
     y_probs = model.predict(X_test, batch_size=32).flatten()
     y_pred = (y_probs >= BEST_THRESHOLD).astype(int)

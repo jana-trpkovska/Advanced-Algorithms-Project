@@ -3,11 +3,12 @@ import numpy as np
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from tqdm.keras import TqdmCallback
 from tensorflow.keras.optimizers import Adam
+from sklearn.utils.class_weight import compute_class_weight
 
 from src.models.cnn import create_cnn_model
 from src.training.load_data import load_tokenized_data
 
-MODEL_VERSION = 6
+MODEL_VERSION = 7
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_DIR = BASE_DIR / "src" / "models"
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
@@ -30,11 +31,24 @@ def unfreeze_embeddings(model):
     return model
 
 
+def compute_class_weights(y):
+    classes = np.unique(y)
+    weights = compute_class_weight(
+        class_weight="balanced",
+        classes=classes,
+        y=y
+    )
+    return dict(zip(classes, weights))
+
+
 def train():
     print(f"Training CNN model v{MODEL_VERSION}")
 
     X_train, _, y_train = load_tokenized_data("train")
     X_val, _, y_val = load_tokenized_data("val")
+
+    class_weights = compute_class_weights(y_train)
+    print("Class weights:", class_weights)
 
     embedding_matrix = np.load(EMBEDDINGS_PATH)
 
@@ -69,6 +83,7 @@ def train():
         validation_data=(X_val, y_val),
         epochs=50,
         batch_size=32,
+        class_weight=class_weights,
         callbacks=[
             early_stopping,
             checkpoint,
@@ -86,6 +101,7 @@ def train():
         validation_data=(X_val, y_val),
         epochs=8,
         batch_size=32,
+        class_weight=class_weights,
         callbacks=[early_stopping, checkpoint, TqdmCallback(verbose=1)],
     )
 

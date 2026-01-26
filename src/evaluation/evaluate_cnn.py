@@ -5,7 +5,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from src.training.load_data import load_tokenized_data
 from src.models.kmax_pooling_layer_cnn import KMaxPooling
 
-MODEL_VERSION = 6
+MODEL_VERSION = 7
 base_dir = Path(__file__).resolve().parents[2]
 MODEL_PATH = base_dir / "src" / "models" / f"cnn_model_v{MODEL_VERSION}.h5"
 BEST_THRESHOLD = 0.5

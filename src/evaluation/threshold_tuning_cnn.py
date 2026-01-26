@@ -4,7 +4,7 @@ from tensorflow.keras.models import load_model
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 from src.models.kmax_pooling_layer_cnn import KMaxPooling
 
-MODEL_VERSION = 8
+MODEL_VERSION = 9
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / "src" / "models" / f"cnn_model_v{MODEL_VERSION}.h5"
 TOKENIZED_DIR = BASE_DIR / "data" / "datasets" / "tokenized"

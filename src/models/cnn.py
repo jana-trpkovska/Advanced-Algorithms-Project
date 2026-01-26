@@ -1,5 +1,5 @@
 from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Embedding, Conv1D, GlobalMaxPooling1D, Dense, Dropout, Concatenate, Flatten
+from tensorflow.keras.layers import Input, Embedding, Conv1D, GlobalMaxPooling1D, Dense, Dropout, Concatenate, BatchNormalization
 from tensorflow.keras.regularizers import l2
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.metrics import Precision, Recall
@@ -26,7 +26,7 @@ def create_cnn_model(
 
     conv_blocks = []
     for k in kernel_sizes:
-        conv1 = Conv1D(
+        conv = Conv1D(
             filters=num_filters,
             kernel_size=k,
             activation="relu",
@@ -34,21 +34,24 @@ def create_cnn_model(
             kernel_regularizer=l2(1e-4),
             name=f"conv1_{k}",
         )(embedding)
+        conv = Dropout(0.2, name=f"dropout1_{k}")(conv)
+        conv = BatchNormalization()(conv)
 
-        conv2 = Conv1D(
-            filters=num_filters * 2,
+        conv = Conv1D(
+            filters=num_filters,
             kernel_size=k,
             activation="relu",
             padding="same",
             kernel_regularizer=l2(1e-4),
             name=f"conv2_{k}",
-        )(conv1)
+        )(conv)
+        conv = Dropout(0.2, name=f"dropout2_{k}")(conv)
+        conv = BatchNormalization()(conv)
 
-        pooled = GlobalMaxPooling1D(name=f"pool_{k}")(conv2)
+        pooled = GlobalMaxPooling1D(name=f"pool_{k}")(conv)
         conv_blocks.append(pooled)
 
     x = Concatenate(name="concat")(conv_blocks)
-
     x = Dropout(dropout_rate, name="dropout")(x)
     x = Dense(64, activation="relu", kernel_regularizer=l2(1e-4), name="dense")(x)
     outputs = Dense(1, activation="sigmoid", name="output")(x)

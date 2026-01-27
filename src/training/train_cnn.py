@@ -1,13 +1,13 @@
 from pathlib import Path
 import numpy as np
-from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
+from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
 from tqdm.keras import TqdmCallback
 from tensorflow.keras.optimizers import Adam
 
 from src.models.cnn import create_cnn_model
 from src.training.load_data import load_tokenized_data
 
-MODEL_VERSION = 10
+MODEL_VERSION = 2
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_DIR = BASE_DIR / "src" / "models"
 MODEL_DIR.mkdir(parents=True, exist_ok=True)
@@ -63,14 +63,6 @@ def train():
         save_best_only=True,
     )
 
-    reduce_lr = ReduceLROnPlateau(
-        monitor="val_loss",
-        factor=0.5,
-        patience=2,
-        min_lr=1e-5,
-        verbose=1
-    )
-
     model.fit(
         X_train,
         y_train,
@@ -80,7 +72,6 @@ def train():
         callbacks=[
             early_stopping,
             checkpoint,
-            reduce_lr,
             TqdmCallback(verbose=1),
         ]
     )
@@ -95,7 +86,7 @@ def train():
         validation_data=(X_val, y_val),
         epochs=8,
         batch_size=32,
-        callbacks=[early_stopping, checkpoint, reduce_lr, TqdmCallback(verbose=1)],
+        callbacks=[early_stopping, checkpoint, TqdmCallback(verbose=1)],
     )
 
     print(f"Best model saved to: {MODEL_PATH}")

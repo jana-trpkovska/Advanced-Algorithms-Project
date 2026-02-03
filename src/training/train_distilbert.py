@@ -9,7 +9,7 @@ from tqdm import tqdm
 from src.models.distilbert import DistilBERTClassifier
 from src.data_scripts.preprocess_transformer import DDIDataset
 
-MODEL_VERSION = 1
+MODEL_VERSION = 2
 BASE_DIR = Path(__file__).resolve().parent
 
 TRAIN_CSV = BASE_DIR / "train.csv"
@@ -20,7 +20,7 @@ PRETRAINED_MODEL_NAME = "distilbert-base-uncased"
 
 BATCH_SIZE = 8
 MAX_LENGTH = 96
-LEARNING_RATE = 3e-5
+LEARNING_RATE = 1e-5
 WEIGHT_DECAY = 0.01
 PATIENCE = 2
 MAX_EPOCHS = 20
@@ -129,8 +129,18 @@ def main():
         num_labels=2
     ).to(DEVICE)
 
+    for param in model.encoder.parameters():
+        param.requires_grad = False
+
+    for layer in model.encoder.transformer.layer[-3:]:
+        for param in layer.parameters():
+            param.requires_grad = True
+
+    for param in model.classifier.parameters():
+        param.requires_grad = True
+
     optimizer = AdamW(
-        model.parameters(),
+        filter(lambda p: p.requires_grad, model.parameters()),
         lr=LEARNING_RATE,
         weight_decay=WEIGHT_DECAY
     )

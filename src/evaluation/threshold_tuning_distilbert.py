@@ -8,7 +8,7 @@ from tqdm import tqdm
 from src.models.distilbert import DistilBERTClassifier
 from src.data_scripts.preprocess_transformer import DDIDataset
 
-MODEL_VERSION = 1
+MODEL_VERSION = 2
 BASE_DIR = Path(__file__).resolve().parent
 
 MODEL_PATH = BASE_DIR / f"distilbert_v{MODEL_VERSION}.pt"
@@ -21,10 +21,11 @@ MAX_LENGTH = 128
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {DEVICE}")
 
+
 def evaluate_with_thresholds(
-    probs,
-    y_true,
-    thresholds=np.arange(0.30, 0.71, 0.01)
+        probs,
+        y_true,
+        thresholds=np.arange(0.30, 0.71, 0.01)
 ):
     best_f1 = 0.0
     best_threshold = 0.5

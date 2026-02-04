@@ -9,7 +9,7 @@ from tqdm import tqdm
 from src.models.distilbert import DistilBERTClassifier
 from src.data_scripts.preprocess_transformer import DDIDataset
 
-MODEL_VERSION = 3
+MODEL_VERSION = 4
 BASE_DIR = Path(__file__).resolve().parent
 
 TRAIN_CSV = BASE_DIR / "train.csv"
@@ -22,7 +22,7 @@ BATCH_SIZE = 8
 MAX_LENGTH = 128
 LEARNING_RATE = 1e-5
 WEIGHT_DECAY = 0.01
-PATIENCE = 2
+PATIENCE = 3
 MAX_EPOCHS = 25
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -132,7 +132,7 @@ def main():
     for param in model.encoder.parameters():
         param.requires_grad = False
 
-    for layer in model.encoder.transformer.layer[-3:]:
+    for layer in model.encoder.transformer.layer[-4:]:
         for param in layer.parameters():
             param.requires_grad = True
 

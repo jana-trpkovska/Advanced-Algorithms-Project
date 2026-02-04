@@ -9,7 +9,7 @@ from tqdm import tqdm
 from src.models.distilbert import DistilBERTClassifier
 from src.data_scripts.preprocess_transformer import DDIDataset
 
-MODEL_VERSION = 2
+MODEL_VERSION = 3
 BASE_DIR = Path(__file__).resolve().parent
 
 TRAIN_CSV = BASE_DIR / "train.csv"
@@ -19,11 +19,11 @@ MODEL_PATH = BASE_DIR / f"distilbert_v{MODEL_VERSION}.pt"
 PRETRAINED_MODEL_NAME = "distilbert-base-uncased"
 
 BATCH_SIZE = 8
-MAX_LENGTH = 96
+MAX_LENGTH = 128
 LEARNING_RATE = 1e-5
 WEIGHT_DECAY = 0.01
 PATIENCE = 2
-MAX_EPOCHS = 20
+MAX_EPOCHS = 25
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {DEVICE}")

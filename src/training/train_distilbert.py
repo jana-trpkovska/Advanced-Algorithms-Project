@@ -5,11 +5,13 @@ from torch.utils.data import DataLoader
 from torch.optim import AdamW
 from transformers import get_linear_schedule_with_warmup
 from tqdm import tqdm
+from sklearn.utils.class_weight import compute_class_weight
+import numpy as np
 
 from src.models.distilbert import DistilBERTClassifier
 from src.data_scripts.preprocess_transformer import DDIDataset
 
-MODEL_VERSION = 4
+MODEL_VERSION = 5
 BASE_DIR = Path(__file__).resolve().parent
 
 TRAIN_CSV = BASE_DIR / "train.csv"
@@ -19,11 +21,11 @@ MODEL_PATH = BASE_DIR / f"distilbert_v{MODEL_VERSION}.pt"
 PRETRAINED_MODEL_NAME = "distilbert-base-uncased"
 
 BATCH_SIZE = 8
-MAX_LENGTH = 128
-LEARNING_RATE = 1e-5
+MAX_LENGTH = 96
+LEARNING_RATE = 2e-5
 WEIGHT_DECAY = 0.01
-PATIENCE = 3
-MAX_EPOCHS = 25
+PATIENCE = 2
+MAX_EPOCHS = 20
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"Using device: {DEVICE}")
@@ -129,18 +131,8 @@ def main():
         num_labels=2
     ).to(DEVICE)
 
-    for param in model.encoder.parameters():
-        param.requires_grad = False
-
-    for layer in model.encoder.transformer.layer[-4:]:
-        for param in layer.parameters():
-            param.requires_grad = True
-
-    for param in model.classifier.parameters():
-        param.requires_grad = True
-
     optimizer = AdamW(
-        filter(lambda p: p.requires_grad, model.parameters()),
+        model.parameters(),
         lr=LEARNING_RATE,
         weight_decay=WEIGHT_DECAY
     )
@@ -152,7 +144,17 @@ def main():
         num_training_steps=total_steps
     )
 
-    loss_fn = nn.CrossEntropyLoss()
+    train_labels = train_dataset.labels
+
+    class_weights = compute_class_weight(
+        class_weight="balanced",
+        classes=np.array([0, 1]),
+        y=train_labels
+    )
+
+    class_weights = torch.tensor(class_weights, dtype=torch.float).to(DEVICE)
+
+    loss_fn = nn.CrossEntropyLoss(weight=class_weights)
 
     best_val_loss = float("inf")
     epochs_without_improvement = 0

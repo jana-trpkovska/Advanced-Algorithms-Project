@@ -7,7 +7,7 @@ from tqdm import tqdm
 from src.models.distilbert import DistilBERTClassifier
 from src.data_scripts.preprocess_transformer import DDIDataset
 
-MODEL_VERSION = 4
+MODEL_VERSION = 5
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / f"distilbert_v{MODEL_VERSION}.pt"
 
@@ -15,7 +15,7 @@ TEST_CSV = BASE_DIR / "test.csv"
 PRETRAINED_MODEL_NAME = "distilbert-base-uncased"
 
 BATCH_SIZE = 16
-MAX_LENGTH = 128
+MAX_LENGTH = 96
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 torch.backends.cudnn.benchmark = True
@@ -23,7 +23,6 @@ torch.backends.cudnn.benchmark = True
 print(f"Using device: {DEVICE}")
 if DEVICE.type == "cuda":
     print(f"GPU: {torch.cuda.get_device_name(0)}")
-
 
 def evaluate():
     print("Loading test dataset...")

@@ -5,9 +5,9 @@ from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 from tqdm import tqdm
 
 from src.models.distilbert import DistilBERTClassifier
-from src.data_scripts.preprocess_transformer import DDIDataset
+from src.data_scripts.preprocess_transformer_distilbert import DDIDataset
 
-MODEL_VERSION = 5
+MODEL_VERSION = 1
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / f"distilbert_v{MODEL_VERSION}.pt"
 
@@ -16,6 +16,7 @@ PRETRAINED_MODEL_NAME = "distilbert-base-uncased"
 
 BATCH_SIZE = 16
 MAX_LENGTH = 96
+THRESHOLD = 0.47  # after threshold tuning
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 torch.backends.cudnn.benchmark = True
@@ -23,6 +24,7 @@ torch.backends.cudnn.benchmark = True
 print(f"Using device: {DEVICE}")
 if DEVICE.type == "cuda":
     print(f"GPU: {torch.cuda.get_device_name(0)}")
+
 
 def evaluate():
     print("Loading test dataset...")
@@ -47,6 +49,8 @@ def evaluate():
     all_preds = []
     all_labels = []
 
+    softmax = torch.nn.Softmax(dim=1)
+
     with torch.no_grad():
         for batch in tqdm(test_loader, desc="Evaluating"):
             input_ids = batch["input_ids"].to(DEVICE, non_blocking=True)
@@ -54,7 +58,8 @@ def evaluate():
             labels = batch["labels"].to(DEVICE, non_blocking=True)
 
             logits = model(input_ids=input_ids, attention_mask=attention_mask)
-            preds = torch.argmax(logits, dim=1)
+            probs = softmax(logits)[:, 1]
+            preds = (probs >= THRESHOLD).long()
 
             all_preds.extend(preds.cpu().tolist())
             all_labels.extend(labels.cpu().tolist())
@@ -65,10 +70,11 @@ def evaluate():
     )
 
     print("\nTest Results:")
-    print(f"Accuracy : {acc:.4f}")
-    print(f"Precision: {precision:.4f}")
-    print(f"Recall   : {recall:.4f}")
-    print(f"F1-score : {f1:.4f}")
+    print(f"Threshold : {THRESHOLD:.2f}")
+    print(f"Accuracy  : {acc:.4f}")
+    print(f"Precision : {precision:.4f}")
+    print(f"Recall    : {recall:.4f}")
+    print(f"F1-score  : {f1:.4f}")
 
 
 if __name__ == "__main__":

@@ -5,13 +5,11 @@ from torch.utils.data import DataLoader
 from torch.optim import AdamW
 from transformers import get_linear_schedule_with_warmup
 from tqdm import tqdm
-from sklearn.utils.class_weight import compute_class_weight
-import numpy as np
 
 from src.models.distilbert import DistilBERTClassifier
-from src.data_scripts.preprocess_transformer import DDIDataset
+from src.data_scripts.preprocess_transformer_distilbert import DDIDataset
 
-MODEL_VERSION = 5
+MODEL_VERSION = 1
 BASE_DIR = Path(__file__).resolve().parent
 
 TRAIN_CSV = BASE_DIR / "train.csv"
@@ -22,7 +20,7 @@ PRETRAINED_MODEL_NAME = "distilbert-base-uncased"
 
 BATCH_SIZE = 8
 MAX_LENGTH = 96
-LEARNING_RATE = 2e-5
+LEARNING_RATE = 3e-5
 WEIGHT_DECAY = 0.01
 PATIENCE = 2
 MAX_EPOCHS = 20
@@ -144,17 +142,7 @@ def main():
         num_training_steps=total_steps
     )
 
-    train_labels = train_dataset.labels
-
-    class_weights = compute_class_weight(
-        class_weight="balanced",
-        classes=np.array([0, 1]),
-        y=train_labels
-    )
-
-    class_weights = torch.tensor(class_weights, dtype=torch.float).to(DEVICE)
-
-    loss_fn = nn.CrossEntropyLoss(weight=class_weights)
+    loss_fn = nn.CrossEntropyLoss()
 
     best_val_loss = float("inf")
     epochs_without_improvement = 0

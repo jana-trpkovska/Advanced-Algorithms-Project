@@ -6,9 +6,9 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 from tqdm import tqdm
 
 from src.models.distilbert import DistilBERTClassifier
-from src.data_scripts.preprocess_transformer import DDIDataset
+from src.data_scripts.preprocess_transformer_distilbert import DDIDataset
 
-MODEL_VERSION = 5
+MODEL_VERSION = 1
 BASE_DIR = Path(__file__).resolve().parent
 
 MODEL_PATH = BASE_DIR / f"distilbert_v{MODEL_VERSION}.pt"

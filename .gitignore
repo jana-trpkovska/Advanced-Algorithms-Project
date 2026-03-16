@@ -24,7 +24,7 @@ Thumbs.db
 
 # Models
 *.h5
-.pt
+*.pt
 
 # Embedding files
 data/embeddings

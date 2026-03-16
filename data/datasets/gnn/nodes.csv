@@ -1,0 +1,1055 @@
+Drug ID,Drug Name,Generic Name
+1,Abecma,idecabtagene vicleucel
+2,Abilify,aripiprazole
+3,Abilify Asimtufii,aripiprazole
+4,Abilify Maintena,aripiprazole lauroxil (injection)
+5,Abiraterone,abiraterone acetate
+6,Acetaminophen,acetaminophen (oral)
+7,Acetylcysteine,acetylcysteine (oral)
+8,Actemra,tocilizumab
+9,Actos,pioglitazone (oral)
+10,Acyclovir,acyclovir (oral)
+11,Adderall,amphetamine and dextroamphetamine
+12,Adderall XR,amphetamine and dextroamphetamine
+13,Advair Diskus,fluticasone and salmeterol
+14,Advil,ibuprofen
+15,Afinitor,everolimus
+16,Agamree,vamorolone
+17,Aimovig,erenumab
+18,Ajovy,fremanezumab-vfrm
+19,Albuterol Inhalation,albuterol inhalation
+20,Alecensa,alectinib
+21,Alendronate,alendronate
+22,Aleve,naproxen
+24,Allegra,fexofenadine
+25,Allopurinol,allopurinol (oral/injection)
+26,Alprazolam,alprazolam
+27,Alprolix,"Coagulation Factor IX (Recombinant), Fc Fusion Protein"
+28,Alunbrig,brigatinib
+29,Amantadine,amantadine
+30,Ambien,zolpidem
+31,Amiodarone,amiodarone tablets (oral)
+32,Amitriptyline,
+33,Amlodipine,amlodipine
+34,Amoxicillin,amoxicillin
+35,Amoxicillin and Clavulanate,amoxicillin and clavulanate potassium
+36,Ampicillin,ampicillin (oral)
+38,Anastrozole,anastrozole
+39,AndroGel,testosterone topical
+40,Annovera Vaginal Ring,ethinyl estradiol and segesterone (vaginal ring)
+41,Apalutamide,apalutamide
+42,Apixaban,apixaban
+43,Apokyn,apomorphine injection
+44,Apriso,mesalamine (oral)
+45,Aptiom,eslicarbazepine
+46,Aricept,donepezil
+47,Arikayce,amikacin liposome
+48,Arimidex,anastrozole
+49,Aripiprazole,
+50,Aristada Injection,aripiprazole lauroxil (injection)
+51,Aromasin,exemestane
+52,Aspirin,aspirin (oral)
+53,Atarax,hydroxyzine
+54,Atenolol,atenolol
+55,Ativan,lorazepam
+56,Atogepant,
+57,Atomoxetine,atomoxetine
+58,Atorvastatin,atorvastatin
+59,Aubagio,teriflunomide
+60,Augmentin,amoxicillin and clavulanate potassium
+61,Austedo,deutetrabenazine
+62,Auvelity,bupropion and dextromethorphan
+63,Auvi-Q,epinephrine injection (auto-injector)
+65,Avonex,interferon beta-1a
+66,Azathioprine,azathioprine
+67,Azilect,rasagiline
+68,Azithromycin,azithromycin
+69,Azulfidine,sulfasalazine
+70,Baclofen,baclofen (oral)
+71,Bactrim,sulfamethoxazole and trimethoprim
+73,Balsalazide,balsalazide
+74,Banzel,rufinamide
+75,Baqsimi,glucagon
+76,Basaglar,insulin glargine
+77,Bavencio,avelumab
+78,Belbuca,buprenorphine (oral/buccal)
+79,Belsomra,suvorexant
+80,Benadryl,diphenhydramine
+81,Benazepril,benazepril
+82,Bendeka,bendamustine
+83,Benicar,olmesartan
+84,Benlysta,belimumab
+85,Bentyl,dicyclomine (oral/injection)
+86,Benzonatate,benzonatate
+87,Benztropine,benztropine (oral/injection)
+88,Berinert,complement C1 esterase inhibitor
+89,Berotralstat,
+91,Betamethasone Topical,betamethasone topical
+92,Betaseron,interferon beta-1b
+93,Bevacizumab,Bevacizumab
+94,Beyfortus,nirsevimab-alip
+95,Bicalutamide,bicalutamide
+96,Biktarvy,"bictegravir, emtricitabine, tenofovir"
+97,Bismuth subsalicylate,bismuth subsalicylate
+98,Bisoprolol,bisoprolol
+99,Blincyto,blinatumomab
+100,Boniva,ibandronate (oral/injection)
+102,Breo Ellipta,fluticasone and vilanterol
+104,Breyanzi,lisocabtagene maraleucel
+105,Breztri,"budesonide, glycopyrrolate, and formoterol fumarate"
+106,Brilinta,ticagrelor
+107,Briumvi,ublituximab-xiiy
+108,Briviact,brivaracetam
+109,Brukinsa,zanubrutinib
+110,Bryhali,halobetasol propionate 0.01%
+111,Budesonide (oral),budesonide
+113,"Budesonide, glycopyrrolate, and formoterol inhaler","Budesonide, glycopyrrolate, and formoterol"
+114,Bunavail,buprenorphine and naloxone (oral/sublingual)
+115,Buprenex Injection,buprenorphine injection
+116,Buprenorphine,buprenorphine
+118,Bupropion,bupropion
+119,BuSpar,buspirone
+120,Buspirone,buspirone
+121,Bystolic,nebivolol
+122,Cabenuva,cabotegravir and rilpivirine
+123,Cabometyx,cabozantinib
+124,Calcitriol,calcitriol (oral/injection)
+125,Calcium carbonate,calcium carbonate
+126,Calquence,acalabrutinib
+127,Camzyos,mavacamten
+128,Candesartan,candesartan
+129,Caplyta,lumateperone
+130,Captopril,captopril
+131,Carbamazepine,carbamazepine (oral)
+132,Carbidopa and levodopa,carbidopa and levodopa
+133,Carvedilol,carvedilol
+134,Carvykti,ciltacabtagene autoleucel
+135,Casodex,bicalutamide
+136,Cefdinir,cefdinir
+137,Cefixime,cefixime
+138,Celebrex,celecoxib
+139,Celecoxib,celecoxib
+140,Celexa,citalopram
+141,Cephalexin,cephalexin
+142,Cequa Eye Drops,cyclosporine ophthalmic
+143,Cetirizine,cetirizine
+144,Chlorpheniramine,chlorpheniramine
+145,Chlorthalidone,chlorthalidone
+146,Cholecalciferol,cholecalciferol (vitamin D3)
+147,Cialis,tadalafil
+148,Cimzia,certolizumab
+149,Cinryze,complement C1 esterase inhibitor
+150,Cipro,ciprofloxacin (oral)
+151,Ciprofloxacin,ciprofloxacin (oral)
+152,Citalopram,citalopram
+153,Claritin,loratadine
+154,Clindamycin,clindamycin
+155,Clobetasol,clobetasol topical
+156,Clobex,clobetasol topical
+157,Clodan,clobetasol topical
+158,Clonazepam,clonazepam
+159,Clonidine,clonidine (oral)
+160,Clopidogrel,clopidogrel
+161,Clotrimazole,clotrimazole
+162,Clozapine,clozapine
+163,Cobenfy,xanomeline and trospium chloride
+164,Codeine,codeine
+165,Colace,docusate
+166,Colazal,balsalazide
+168,Concerta,methylphenidate (oral)
+169,Coreg,carvedilol
+170,Cosentyx,secukinumab
+171,Coumadin,warfarin (oral)
+172,Crestor,rosuvastatin
+173,Cyclobenzaprine,cyclobenzaprine
+174,Cymbalta,duloxetine
+175,Dabigatran,dabigatran
+176,Darzalex,daratumumab
+177,Dayvigo,lemborexant
+178,Decadron,dexamethasone (oral)
+179,Degarelix,degarelix
+180,Depakote,divalproex sodium
+181,Descovy,emtricitabine and tenofovir alafenamide
+182,Desloratadine,desloratadine
+183,Desvenlafaxine,desvenlafaxine
+184,Desyrel,trazodone
+185,Dexamethasone,dexamethasone (oral)
+186,Dexilant,dexlansoprazole
+187,Dextroamphetamine,dextroamphetamine
+188,Dextromethorphan,dextromethorphan
+189,Diacomit,stiripentol
+190,Diastat AcuDial,diazepam
+191,Diazepam,diazepam (oral)
+192,Diclofenac,diclofenac
+193,Dicyclomine,dicyclomine (oral/injection)
+194,Diflucan,fluconazole
+195,Digoxin,digoxin (oral/injection)
+196,Dilantin,phenytoin (oral)
+197,Dilaudid,hydromorphone (oral)
+198,Diltiazem,diltiazem (oral/injection)
+199,Diovan,valsartan
+200,Dipentum,olsalazine
+201,Diphenhydramine,diphenhydramine
+202,Diprolene,betamethasone topical
+203,Divalproex sodium,divalproex sodium
+205,Donepezil,donepezil
+206,Dopamine Injection,dopamine (injection)
+207,Dorzolamide ophthalmic,dorzolamide ophthalmic
+208,Doxazosin,doxazosin
+209,Doxycycline,doxycycline
+210,Doxylamine,doxylamine
+211,Dramamine,dimenhydrinate
+212,Dulcolax Laxative,bisacodyl (oral and rectal)
+213,Duloxetine,duloxetine
+214,Duopa,carbidopa and levodopa enteral
+215,Dupixent,dupilumab
+216,Dutasteride,dutasteride
+217,Ebglyss,lebrikizumab-lbkz
+218,Ecotrin,aspirin (oral)
+219,Effexor,venlafaxine
+220,Elagolix,Elagolix
+221,Elavil,amitriptyline
+222,Elevidys,delandistrogene moxeparvovec-rokl
+223,Eligard,leuprolide
+224,Eliquis,apixaban
+225,Emgality,galcanezumab
+226,Empagliflozin,empagliflozin
+227,Empaveli,pegcetacoplan
+228,Enalapril,enalapril (oral/injection)
+229,Enbrel,etanercept
+230,Enhertu,fam-trastuzumab deruxtecan
+231,Enoxaparin,enoxaparin
+232,Enspryng,satralizumab-mwge
+233,Entecavir,entecavir
+234,Entresto,sacubitril and valsartan
+235,Entyvio,vedolizumab
+236,Enzalutamide,enzalutamide
+237,Epclusa,sofosbuvir/velpatasvir
+238,Epidiolex,cannabidiol
+239,EpiPen,epinephrine injection
+240,Eplerenone,eplerenone
+241,Ergocalciferol,ergocalciferol (vitamin D2)
+242,Erleada,apalutamide
+243,Ertapenem,ertapenem
+244,Erythromycin,erythromycin (oral/injection)
+245,Escitalopram,escitalopram
+246,Esomeprazole,esomeprazole (oral)
+247,Estrace,estradiol oral
+248,Estradiol,estradiol oral
+249,Eszopiclone,eszopiclone
+250,Ethambutol,ethambutol
+251,Etodolac,etodolac
+253,Euthyrox,levothyroxine
+254,Evenity,romosozumab
+255,Evista,raloxifene
+256,Evkeeza,evinacumab-(E vin AK ue mab)
+257,Evolocumab,evolocumab
+258,Excedrin,"acetaminophen, aspirin, and caffeine"
+259,Excedrin Migraine,"acetaminophen, aspirin, and caffeine"
+260,Exemestane,exemestane
+261,Extavia,interferon beta-1b
+263,Ezetimibe,ezetimibe
+265,Farxiga,dapagliflozin
+266,Fasenra,benralizumab
+267,Faslodex,fulvestrant
+268,Febuxostat,febuxostat
+269,Felodipine,felodipine
+270,Femara,letrozole
+271,Fenofibrate,fenofibrate
+272,Fentanyl,fentanyl
+273,FeroSul,ferrous sulfate
+274,Ferrous fumarate,ferrous fumarate
+275,Ferrous gluconate,ferrous gluconate
+276,Ferrous sulfate,ferrous sulfate
+277,Fexofenadine,fexofenadine
+278,Finasteride,
+279,Finerenone,finerenone
+280,Fintepla,fenfluramine
+281,Fioricet,"acetaminophen, butalbital, and caffeine"
+282,Firazyr,icatibant
+283,Firmagon,degarelix
+284,Fish Oil,omega-3 polyunsaturated fatty acids
+285,Flagyl,metronidazole (oral/injection)
+286,Flecainide,flecainide
+287,Flexeril,cyclobenzaprine
+288,Flomax,tamsulosin
+289,Flonase Nasal Spray,fluticasone nasal
+290,Florastor,saccharomyces boulardii lyo
+291,Flovent,fluticasone inhalation
+292,Fluconazole,fluconazole
+293,Fludrocortisone,fludrocortisone
+294,FluMist,influenza virus vaccine (nasal)
+295,Fluocinonide,fluocinonide topical
+296,Fluoxetine,fluoxetine
+297,Fluphenazine,fluphenazine (oral/injection)
+299,Fluticasone and salmeterol,fluticasone and salmeterol
+300,Fluticasone nasal,fluticasone nasal
+301,Fluvoxamine,fluvoxamine
+302,Focalin,dexmethylphenidate
+303,Folic acid,folic acid
+305,Forteo,teriparatide
+306,Fosamax,alendronate
+307,Fosfomycin,fosfomycin
+308,Fulvestrant,fulvestrant
+309,Furosemide,furosemide (oral/injection)
+310,Fycompa,perampanel
+311,Gabapentin,gabapentin
+313,Gabarone,gabapentin
+314,Galantamine,galantamine
+315,Gardasil 9,"human papillomavirus (HPV) vaccine, 9-valent"
+316,Garlic,garlic
+317,Gattex,teduglutide
+318,Gaviscon,aluminum hydroxide and magnesium trisilicate
+319,Gavreto,pralsetinib
+321,Gemcitabine,gemcitabine
+322,Gemfibrozil,gemfibrozil
+323,Gemtesa,vibegron
+324,Genotropin,somatropin
+325,Gentamicin,gentamicin
+326,Gentamicin ophthalmic,gentamicin ophthalmic
+327,Gentamicin topical,gentamicin topical
+328,Genvoya,"cobicistat, elvitegravir, emtricitabine, and tenofovir"
+329,Geodon,ziprasidone
+330,Giazo,balsalazide
+331,Ginger,ginger
+332,Ginkgo Biloba,ginkgo
+333,Gleevec,imatinib
+334,Glimepiride,glimepiride
+335,Glipizide,glipizide
+336,Glipizide and metformin,glipizide and metformin
+337,Glucagon,glucagon
+338,Glucophage,metformin
+339,Glucosamine,glucosamine
+340,Glucotrol,glipizide
+341,Glyburide,glyburide
+343,GlycoLax,polyethylene glycol 3350
+344,Glycopyrrolate,glycopyrrolate (oral/injection)
+345,Glyxambi,empagliflozin and linagliptin
+346,Gocovri,amantadine
+347,GoLYTELY,polyethylene glycol electrolyte solution
+348,Granisetron,granisetron (oral)
+349,Griseofulvin,griseofulvin
+351,Guanfacine,guanfacine
+352,Gvoke,glucagon
+354,Haegarda,c1 esterase inhibitor subcutaneous (human)
+355,Halcion,triazolam
+356,Haldol,haloperidol (oral)
+358,Halobetasol Topical,halobetasol topical
+359,Haloperidol,haloperidol (oral)
+360,Harvoni,ledipasvir and sofosbuvir
+361,Heparin Injection,heparin (injection)
+362,Herceptin,trastuzumab
+363,Hibiclens,chlorhexidine topical
+364,Hiprex,methenamine
+365,Histrelin (implant),histrelin (implant)
+366,Hizentra,immune globulin (subcutaneous)
+367,Humalog,insulin lispro
+368,Humira,adalimumab
+369,Humulin N,insulin isophane
+370,Humulin R,insulin regular
+371,Humulin R (Concentrated) (U-500),"insulin regular, concentrated (U-500)"
+372,Hydralazine,hydralazine
+373,Hydrea,hydroxyurea
+374,Hydrochlorothiazide,hydrochlorothiazide
+375,Hydrochlorothiazide and lisinopril,hydrochlorothiazide and lisinopril
+376,Hydrochlorothiazide and losartan,hydrochlorothiazide and losartan
+377,Hydrochlorothiazide and olmesartan,hydrochlorothiazide and olmesartan
+378,Hydrochlorothiazide and telmisartan,hydrochlorothiazide and telmisartan
+379,Hydrochlorothiazide and triamterene,hydrochlorothiazide and triamterene
+380,Hydrochlorothiazide and valsartan,hydrochlorothiazide and valsartan
+381,Hydrocodone,hydrocodone (oral)
+382,Acetaminophen and Hydrocodone,acetaminophen and hydrocodone
+383,Hydrocortisone,
+384,Hydromorphone,hydromorphone (oral)
+385,Hydroxychloroquine,hydroxychloroquine
+386,Hydroxyurea,hydroxyurea
+387,Hydroxyzine,hydroxyzine
+388,Hyoscyamine,hyoscyamine
+390,Hytrin,terazosin
+391,Hyzaar,hydrochlorothiazide and losartan
+392,Ibrance,palbociclib
+394,Ibuprofen,ibuprofen
+395,Iclusig,ponatinib
+396,Icosapent,icosapent
+397,Idhifa,enasidenib
+398,Ilumya,tildrakizumab
+399,Imatinib,imatinib
+400,Imbruvica,ibrutinib
+401,Imdelltra,tarlatamab
+402,Imdur,isosorbide mononitrate
+403,Imfinzi,durvalumab
+404,Imipramine,imipramine
+406,Imitrex,sumatriptan (oral/nasal)
+407,Impoyz cream,clobetasol propionate 0.025%
+408,Imuran,azathioprine
+409,Inbrija,levodopa inhalation capsules
+410,Incruse Ellipta,umeclidinium
+411,Indapamide,indapamide
+412,Inderal,propranolol
+413,Indocin,indomethacin (oral)
+414,Indomethacin,indomethacin (oral)
+415,Infed,iron dextran
+416,Infliximab,infliximab
+417,Ingrezza,valbenazine
+418,Injectafer,ferric carboxymaltose injection
+419,Inlyta,axitinib
+420,Inrebic,fedratinib
+421,Insulin aspart,insulin aspart
+422,Insulin degludec,insulin degludec
+423,Insulin Detemir,insulin detemir
+424,Insulin glargine,
+425,Insulin lispro,insulin lispro
+426,Insulin Regular,insulin regular
+427,Intuniv,guanfacine
+428,Invega,paliperidone (oral)
+429,Invega Sustenna,paliperidone (injection)
+430,Invokana,canagliflozin
+431,Iopamidol,iopamidol
+432,Irbesartan,irbesartan
+433,Isoniazid,isoniazid
+434,Isosorbide Mononitrate,isosorbide mononitrate
+435,Isosorbide dinitrate,isosorbide dinitrate
+436,Isotretinoin,isotretinoin (oral)
+437,Itraconazole,itraconazole
+438,Ivabradine,ivabradine
+439,Ivermectin,ivermectin (oral)
+441,Jadenu,deferasirox
+442,Jakafi,ruxolitinib
+443,Jalyn,dutasteride and tamsulosin
+444,Jantoven,warfarin (oral)
+445,Janumet,metformin and sitagliptin
+446,Janumet XR,metformin and sitagliptin
+447,Januvia,sitagliptin
+448,Jardiance,empagliflozin
+449,Jatenzo,testosterone oral
+450,Jaypirca,pirtobrutinib
+451,Jemperli,dostarlimab-gxly
+452,Jentadueto,linagliptin and metformin
+453,Jeuveau,prabotulinumtoxinA
+454,Jevtana,cabazitaxel
+455,Joenja,leniolisib
+457,Jornay PM,methylphenidate hydrochloride
+459,Jubbonti,denosumab-bbdz
+461,Juluca,dolutegravir and rilpivirine
+465,Juvisync,simvastatin and sitagliptin
+466,Juxtapid,lomitapide
+467,Jynarque,tolvaptan
+468,Jynneos,"smallpox and Mpox vaccine, live, non-replicating"
+469,Kadcyla,ado-trastuzumab emtansine
+472,Kaolin,
+474,Kapvay,clonidine (oral)
+475,Kayexalate,sodium polystyrene sulfonate
+476,Keflex,cephalexin
+477,Kenalog,triamcinolone topical
+478,Kenalog-40,triamcinolone acetonide 40mg/mL
+479,Keppra,levetiracetam (oral/injection)
+481,Kerendia,finerenone
+482,Kesimpta,ofatumumab
+483,Ketalar,ketamine
+484,Ketamine,Ketamine
+485,Ketoconazole,ketoconazole
+487,Ketoprofen,ketoprofen
+488,Ketorolac ophthalmic,ketorolac ophthalmic
+490,Kevzara,sarilumab
+491,Keytruda,pembrolizumab
+492,Kineret,anakinra
+493,Kisqali,ribociclib
+494,Kisunla,donanemab
+495,Klonopin,clonazepam
+496,Klor-Con,potassium chloride
+497,Koselugo,selumetinib
+498,Krazati,adagrasib
+500,Kyleena,levonorgestrel intrauterine system
+501,Kytril,granisetron (oral)
+502,Kyzatrex,testosterone oral
+503,Labetalol,labetalol (oral/injection)
+504,Lactulose,lactulose (oral)
+505,Lamictal,lamotrigine
+506,Lamotrigine,lamotrigine
+507,Lanadelumab,Lanadelumab
+508,Lansoprazole,lansoprazole
+509,Lantus,insulin glargine
+510,Lasix,furosemide
+512,Latuda,lurasidone
+513,Leflunomide,leflunomide
+514,Lenvatinib,lenvatinib
+515,Lenvima,lenvatinib
+516,Leqembi,lecanemab
+517,Letrozole,letrozole
+518,Leukeran,chlorambucil
+519,Leuprolide,leuprolide
+520,Levaquin,levofloxacin (oral)
+521,Levemir,insulin detemir
+522,Levocetirizine,levocetirizine
+523,Levodopa inhalation,levodopa inhalation
+524,Levofloxacin,levofloxacin (oral)
+525,Levothyroxine,levothyroxine (oral/injection)
+526,Lexapro,escitalopram
+527,Lexette foam,halobetasol propionate 0.05%
+528,Lialda,mesalamine (oral)
+530,Liletta,levonorgestrel intrauterine system
+531,Linzess,linaclotide
+532,Liothyronine,liothyronine
+533,Lipitor,atorvastatin
+534,Liraglutide,liraglutide
+535,Lisdexamfetamine,lisdexamfetamine
+536,Lisinopril,lisinopril
+537,Lithium,lithium
+538,Lo Loestrin FE,ethinyl estradiol and norethindrone acetate
+539,Lofexidine,lofexidine
+540,Lokelma,sodium zirconium cyclosilicate
+541,Lomotil,atropine and diphenoxylate
+542,Loperamide,loperamide
+543,Loqtorzi,toripalimab-tpzi
+544,Loratadine,loratadine
+545,Lorazepam,lorazepam (oral)
+546,Lorlatinib,lorlatinib
+547,Losartan,losartan
+548,Lovastatin,lovastatin
+549,Lovenox,enoxaparin
+550,Lunesta,eszopiclone
+551,Lupron Depot,leuprolide acetate for depot suspension
+552,Lurasidone,lurasidone
+553,Lutathera,lutetium Lu 177 dotatate
+554,Luxiq,betamethasone topical
+555,Lybalvi,olanzapine and samidorphan
+556,Lyrica,pregabalin
+557,Lyumjev,insulin lispro
+558,Macrobid,nitrofurantoin
+559,Magnesium citrate,magnesium citrate
+560,Magnesium oxide,magnesium oxide
+561,Mavenclad,cladribine (oral)
+562,Mavorixafor,mavorixafor
+563,Mavyret,glecaprevir and pibrentasvir
+564,Mayzent,siponimod
+565,Meclizine,meclizine
+566,Medrol,methylprednisolone (oral)
+567,Mefenamic acid,mefenamic acid
+568,Meloxicam,meloxicam (oral/injection)
+569,Memantine,memantine
+570,Meropenem,meropenem
+571,Mesalamine,mesalamine
+572,Metformin,metformin
+573,Methadone,methadone (oral/injection)
+574,Methimazole,methimazole
+575,Methocarbamol,methocarbamol (oral/injection)
+576,Methotrexate,methotrexate (oral)
+577,Methylphenidate,methylphenidate (oral)
+578,Methylprednisolone,methylprednisolone (oral)
+579,Metoclopramide,metoclopramide (oral/injection)
+580,Metoprolol,metoprolol
+581,Metronidazole,metronidazole
+582,Midazolam,midazolam (oral)
+583,Midodrine,midodrine
+584,Minoxidil,
+585,Mirabegron,mirabegron
+586,MiraLAX,polyethylene glycol 3350
+587,Mirtazapine,mirtazapine
+588,Mobic,meloxicam
+589,Modafinil,modafinil
+590,Montelukast,montelukast
+591,Morphine,
+596,Myfembree,"relugolix, estradiol and norethindrone acetate"
+597,Mylotarg,gemtuzumab ozogamicin
+598,Myrbetriq,mirabegron
+599,Nabumetone,nabumetone
+600,NAC,acetylcysteine (oral)
+601,Nadolol,nadolol
+602,Naloxone,naloxone
+603,Naltrexone,Naltrexone
+604,Namenda,memantine
+605,Naprosyn,naproxen
+606,Naproxen,naproxen
+607,Narcan,naloxone
+608,Nayzilam Nasal Spray,midazolam (nasal)
+609,Nebivolol,nebivolol
+610,neffy,epinephrine nasal spray
+611,Neomycin,neomycin
+613,Nerlynx,neratinib
+614,Neupro Skin Patches,rotigotine (transdermal)
+615,Neurontin,gabapentin
+616,Nexium,esomeprazole magnesium (oral)
+617,Nexletol,bempedoic acid
+619,Nexplanon,etonogestrel (implant)
+620,Ngenla,somatrogon-ghla
+621,Niacin,niacin (nicotinic acid)
+622,Nifedipine,nifedipine
+623,Nilandron,nilutamide
+624,Nilutamide,nilutamide
+625,Ninlaro,ixazomib
+626,Nitazoxanide,nitazoxanide
+627,Nitrofurantoin,nitrofurantoin
+628,Nitrostat,nitroglycerin (sublingual)
+629,Nivolumab,nivolumab
+630,Norco,acetaminophen and hydrocodone
+631,Norepinephrine,norepinephrine
+632,Norethindrone,norethindrone
+633,Norflex,orphenadrine
+634,Nortriptyline,nortriptyline
+635,Norvasc,amlodipine
+636,Nourianz,istradefylline
+637,NovoLog,insulin aspart
+638,NP Thyroid,thyroid desiccated
+639,Nplate,romiplostim
+640,Nubeqa,darolutamide
+641,Nucala,mepolizumab
+642,Nurtec ODT,rimegepant
+643,NuvaRing,ethinyl estradiol and etonogestrel (vaginal ring)
+644,Nuvigil,armodafinil
+645,Nystatin,nystatin (oral)
+647,Ocrelizumab,ocrelizumab
+648,Ocrevus,ocrelizumab
+649,Ofev,nintedanib
+650,Ofloxacin,ofloxacin (oral)
+653,Ojjaara,momelotinib
+654,Olanzapine,olanzapine
+655,Olaparib,olaparib
+656,Olmesartan,olmesartan
+658,Olux,clobetasol topical
+659,Omalizumab,
+660,Omega-3,omega-3 polyunsaturated fatty acids
+661,Omega-3 Fish Oil,omega-3 polyunsaturated fatty acids
+662,Omeprazole,omeprazole
+663,Omnicef,cefdinir
+664,Omvoh,mirikizumab-mrkz
+665,Ondansetron,ondansetron (oral)
+666,Onfi,clobazam
+667,Ongentys,opicapone
+668,Onureg,azacitidine
+669,Opcon-A,naphazoline and pheniramine ophthalmic
+670,Opdivo,nivolumab
+671,Opill,norgestrel
+672,Opzelura,ruxolitinib topical
+673,Orencia,abatacept
+674,Orgovyx,relugolix
+675,Oriahnn,"elagolix, estradiol, and norethindrone"
+676,Orladeyo,berotralstat
+677,Orlistat,orlistat
+678,Orphenadrine,orphenadrine
+679,Oseltamivir,oseltamivir
+680,Osimertinib,osimertinib
+681,Otezla,apremilast
+682,Oxazepam,oxazepam
+683,Oxcarbazepine,oxcarbazepine
+684,Oxtellar XR,oxcarbazepine
+685,Oxybutynin,oxybutynin (oral)
+686,Oxycodone,
+687,OxyContin,oxycodone
+688,Oxymetazoline nasal,oxymetazoline nasal
+689,Oxytocin,oxytocin
+690,Ozanimod,ozanimod
+691,Ozempic,semaglutide injection
+692,Pantoprazole,pantoprazole (oral/injection)
+693,Paracetamol,paracetamol
+694,Paroxetine,paroxetine
+695,Paxil,paroxetine
+696,Paxlovid,nirmatrelvir and ritonavir
+697,Pegcetacoplan eye injections,pegcetacoplan ophthalmic
+698,Pentasa,mesalamine (oral)
+699,Pepcid,famotidine
+700,Percocet,acetaminophen and oxycodone
+701,Perindopril,perindopril
+702,Phenazopyridine,phenazopyridine
+703,Phenergan,promethazine (oral)
+704,Phenobarbital,phenobarbital
+705,Phentermine,phentermine
+706,Phenylephrine,phenylephrine
+707,Phenytoin,phenytoin (oral)
+709,Pioglitazone,pioglitazone (oral)
+710,Piperacillin and tazobactam,piperacillin and tazobactam
+711,Plan B,levonorgestrel emergency contraceptive
+712,Plaquenil,hydroxychloroquine
+713,Plavix,clopidogrel
+714,Potassium Chloride,potassium chloride
+715,Pradaxa,dabigatran
+716,Praluent,alirocumab
+717,Pramipexole,pramipexole
+718,Pravastatin,pravastatin
+719,Prazosin,prazosin
+720,Prednisolone,prednisolone
+721,Prednisone,prednisone
+722,Pregabalin,pregabalin
+723,Premarin,conjugated estrogens (oral)
+724,Prevnar 20,Pneumococcal 20-valent conjugate vaccine
+725,Prilosec,omeprazole
+726,Primidone,primidone
+727,Pristiq,desvenlafaxine
+728,Probuphine Implant,buprenorphine (implant)
+729,Progesterone,progesterone
+730,Promacta,eltrombopag
+731,Promethazine,promethazine (oral)
+732,Propranolol,propranolol
+733,Protonix,pantoprazole (oral/injection)
+734,Provenge,sipuleucel-T
+735,Provera,medroxyprogesterone (oral)
+736,Provigil,modafinil
+737,Prozac,fluoxetine
+738,Pseudoephedrine,pseudoephedrine
+739,Pyridium,phenazopyridine
+741,Qbrelis,lisinopril
+744,Qinlock,ripretinib
+745,QNASL,beclomethasone nasal
+746,Qsymia,phentermine and topiramate
+747,Quazepam,quazepam
+749,Questran,cholestyramine
+750,Quetiapine,quetiapine
+751,QuilliChew ER,methylphenidate hydrochloride
+752,Quillivant XR,methylphenidate (oral)
+753,Quinapril,quinapril
+754,Quinidine,quinidine (oral/injection)
+755,Quinine,quinine
+756,Qulipta,atogepant
+759,Qvar Redihaler,beclomethasone inhalation
+760,Rabeprazole,rabeprazole
+761,Raloxifene,raloxifene
+762,Ramelteon,ramelteon
+764,Ranexa,ranolazine
+765,Ranitidine,ranitidine
+766,Ranolazine,ranolazine
+767,Rapamune,sirolimus
+768,Ravulizumab,ravulizumab-cwvz
+769,Rebif,interferon beta-1a
+770,Reclast,zoledronic acid
+771,Reglan,metoclopramide
+772,Relafen,nabumetone
+773,Relugolix,relugolix
+774,Remeron,mirtazapine
+775,Remicade,infliximab
+776,Repaglinide,repaglinide (oral)
+777,Repatha,evolocumab
+778,Requip,ropinirole (oral)
+779,Restasis,cyclosporine ophthalmic
+780,Restoril,temazepam
+781,Retevmo,selpercatinib
+782,Revlimid,lenalidomide
+784,Reyvow,lasmiditan
+785,Rezdiffra,resmetirom
+786,Rifampin,rifampin (oral/injection)
+787,Rifaximin,rifaximin
+788,Rinvoq,upadacitinib
+789,Risdiplam,risdiplam
+790,Risedronate,risedronate
+791,Risperdal,risperidone (oral)
+792,Risperidone,risperidone (oral)
+793,Ritalin,methylphenidate (oral)
+794,Rituxan Hycela,hyaluronidase and rituximab
+795,Rituximab,rituximab
+796,Rivaroxaban,rivaroxaban
+797,Rivastigmine,rivastigmine (oral)
+798,Rizatriptan,rizatriptan
+799,Robaxin,methocarbamol
+801,Rocephin Injection,ceftriaxone (injection)
+802,Roflumilast Topical,
+803,Ropinirole,ropinirole (oral)
+804,Rosuvastatin,rosuvastatin
+805,Rowasa,mesalamine
+806,Roxicodone,oxycodone
+807,Rozanolixizumab,rozanolixizumab-noli
+808,Ruconest,c1 esterase inhibitor recombinant injection (conestat alfa)
+809,Rybelsus,semaglutide
+810,Rybrevant,amivantamab-vmjw
+811,Rydapt,midostaurin
+812,Rystiggo,rozanolixizumab-noli
+813,Rytary,carbidopa and levodopa
+814,Sabril,vigabatrin
+815,Sacubitril and valsartan,sacubitril and valsartan
+817,Sandostatin,octreotide injection
+818,Saphnelo,anifrolumab-fnia
+819,Satralizumab,
+821,Saxenda,liraglutide
+823,Selumetinib,selumetinib
+824,Semglee,insulin glargine
+825,Senna,senna
+826,Sernivo Spray,betamethasone diproprionate 0.05%
+827,Seroquel,quetiapine
+828,Sertraline,sertraline
+829,Sevelamer,sevelamer
+830,Shingrix Vaccine,zoster vaccine (inactivated)
+831,Sildenafil,sildenafil (oral)
+832,Simponi,golimumab
+833,Simvastatin,simvastatin
+834,Sinemet,carbidopa and levodopa
+835,Singulair,montelukast
+836,Sitagliptin,sitagliptin
+837,Skyrizi,risankizumab
+838,Skytrofa,lonapegsomatropin
+839,Slynd,drospirenone
+840,Sodium bicarbonate,sodium bicarbonate (sew dee uhm buy car bo nayt)
+841,Sofosbuvir,sofosbuvir
+842,Solifenacin,
+843,Soliqua 100/33,insulin glargine and lixisenatide
+844,Soliris,eculizumab
+845,Soma,carisoprodol
+846,Somatropin,
+847,Somatuline Depot,lanreotide
+848,Somavert,pegvisomant
+849,Sotalol,sotalol
+850,Sovaldi,sofosbuvir
+851,Spesolimab,spesolimab-sbzo
+852,Spevigo,spesolimab-sbzo
+853,Spinraza,nusinersen
+854,Spiriva,tiotropium inhalation
+855,Spironolactone,spironolactone
+856,Sprycel,dasatinib
+857,Stelara,ustekinumab
+858,Stiolto Respimat,olodaterol and tiotropium
+859,Strattera,atomoxetine
+860,Stribild,"cobicistat, elvitegravir, emtricitabine, and tenofovir"
+861,Sublocade Injection,buprenorphine (injection)
+862,Suboxone,buprenorphine and naloxone (oral/sublingual)
+863,Sucralfate,sucralfate (oral)
+864,Sudafed,pseudoephedrine
+865,Sulfamethoxazole and trimethoprim,sulfamethoxazole and trimethoprim (oral/injection)
+866,Sulfasalazine,sulfasalazine
+867,Sumatriptan,
+868,Sunlenca,lenacapavir
+869,Sunosi,solriamfetol
+871,Sutent,sunitinib
+872,Syfovre,pegcetacoplan
+873,Symbicort,budesonide and formoterol
+874,Sympazan,clobazam
+875,Synjardy,empagliflozin and metformin
+876,Synthroid,levothyroxine
+877,Tadalafil,tadalafil
+878,Takhzyro,lanadelumab-flyo
+879,Taltz,ixekizumab
+880,Talvey,talquetamab
+881,Tamiflu,oseltamivir
+882,Tamoxifen,tamoxifen
+883,Tamsulosin,tamsulosin
+884,Tavneos,avacopan
+885,"Tazarotene Cream, Gel, Lotion, and Foam",tazarotene topical
+886,Tazorac,tazarotene topical
+887,Tecartus,brexucabtagene autoleucel
+888,Tecentriq,atezolizumab
+889,Tecfidera,dimethyl fumarate
+890,Tecvayli,teclistamab-cqyv
+891,Tegretol,carbamazepine (oral)
+892,Telmisartan,telmisartan
+893,Telotristat ethyl,
+894,Temazepam,temazepam
+895,Temovate,clobetasol topical
+896,Tenormin,atenolol
+897,Tepezza,teprotumumab-trbw
+898,Terazosin,terazosin
+899,Terbinafine,terbinafine
+900,Testosterone Injection,testosterone injection
+901,Tetracycline,tetracycline
+902,Thiamine,thiamine (vitamin B1)
+903,Tibsovo,ivosidenib
+904,Ticagrelor,ticagrelor
+905,Timolol,timolol
+906,Tirzepatide,
+907,Tizanidine,tizanidine
+908,Tolterodine,tolterodine
+909,Topamax,topiramate
+910,Topiramate,
+911,Toprol-XL,"metoprolol succinate tablet, extended release"
+912,Toradol,ketorolac (oral/injection)
+913,Torsemide,torsemide (oral/injection)
+914,Toujeo SoloStar,insulin glargine
+915,Tradjenta,linagliptin
+916,Tramadol,tramadol
+917,Tranexamic acid,tranexamic acid (Cyklokapron)
+918,Trastuzumab deruxtecan,fam-trastuzumab deruxtecan
+919,Trazodone,trazodone
+920,Treanda,bendamustine
+921,Trelegy Ellipta,"fluticasone, umeclidinium, and vilanterol"
+922,Trelstar,triptorelin
+923,Tremfya,guselkumab
+924,Tretinoin Topical,tretinoin
+925,Triamcinolone,triamcinolone (oral)
+926,Triamterene,triamterene
+927,Trileptal,oxcarbazepine
+928,Trimethoprim,trimethoprim
+929,Trintellix,vortioxetine
+930,Triptorelin,triptorelin
+931,Triumeq,"abacavir, dolutegravir, and lamivudine"
+932,Trodelvy,sacituzumab govitecan-hziy
+933,Trokendi XR,topiramate
+934,Truqap,capivasertib
+935,Truxima,rituximab
+937,Twirla Patch,ethinyl estradiol and levonorgestrel (transdermal)
+938,Tylenol,acetaminophen (oral)
+939,Tysabri,natalizumab
+940,Ublituximab,ublituximab
+941,Uceris Tablets,budesonide (oral)
+942,Ulipristal,ulipristal
+943,Uloric,febuxostat
+944,Ultiva,remifentanil
+945,Ultomiris,ravulizumab
+946,Ultracet,acetaminophen and tramadol
+947,Ultram,tramadol
+948,Ultram ER,tramadol
+949,Ultravate,halobetasol topical
+950,Umeclidinium,umeclidinium
+951,Umeclidinium and vilanterol,umeclidinium and vilanterol
+952,Unasyn,ampicillin and sulbactam
+953,Unisom,doxylamine
+954,Unisom Sleep Gels,diphenhydramine
+956,Upadacitinib,upadacitinib
+957,Uplizna,inebilizumab-cdon
+958,Upneeq,oxymetazoline ophthalmic
+959,Uptravi,selexipag (oral/injection)
+962,Urecholine,bethanechol
+963,Uribel,"hyoscyamine, methenamine, methylene blue, phenyl salicylate, Sodium biphosphate monobasic"
+964,Uricalm,phenazopyridine
+966,Urispas,flavoxate
+967,Uro-MP,"hyoscyamine, methenamine, methylene blue, phenyl salicylate, sodium biphosphate"
+968,Urocit-K,potassium citrate
+969,Urogesic-Blue,"hyoscyamine, methenamine, methylene blue, and sodium biphosphate"
+970,Uroxatral,alfuzosin
+972,Ursodiol,ursodiol
+973,Ustekinumab,Ustekinumab
+974,Uzedy,risperidone (injection)
+975,Valacyclovir,valacyclovir
+976,Valium,diazepam (oral)
+978,Valproic acid,valproic acid (oral/injection)
+979,Valsartan,valsartan
+980,Valtoco,diazepam nasal spray
+981,Valtrex,valacyclovir
+982,Vamorolone,
+983,Vancomycin,vancomycin (oral)
+984,Vanos,fluocinonide topical
+985,Varenicline,varenicline
+986,Vascepa,icosapent
+987,Velcade,bortezomib
+988,Venclexta,venetoclax
+989,Venlafaxine,venlafaxine
+990,Venofer Injection,iron sucrose (injection)
+991,Ventolin HFA,albuterol inhalation
+992,Veozah,fezolinetant
+993,Verapamil,verapamil (oral/injection)
+994,Versed,midazolam (oral)
+995,Verzenio,abemaciclib
+996,VESIcare,solifenacin
+997,Viagra,sildenafil (oral)
+998,Vicodin,acetaminophen and hydrocodone
+999,Victoza,liraglutide
+1000,Viibryd,vilazodone
+1001,Vilazodone,vilazodone
+1002,Vimpat,lacosamide (oral/injection)
+1003,Vistaril,hydroxyzine
+1004,Vitamin A,vitamin A (oral/injection)
+1005,Vitamin B6,pyridoxine (vitamin B6)
+1006,Vitamin C,ascorbic acid (vitamin C)
+1007,Vitamin D3,cholecalciferol (vitamin D3)
+1008,Vitamin E,vitamin E
+1009,Voltaren,diclofenac
+1010,Vonjo,pacritinib
+1011,Voquezna,vonoprazan
+1012,Voranigo,vorasidenib
+1013,Vorasidenib,
+1014,Vortioxetine,
+1015,Vosevi,"sofosbuvir, velpatasvir, and voxilaprevir"
+1016,Votrient,pazopanib
+1017,Voydeya,danicopan
+1018,Vraylar,cariprazine
+1020,Vyndamax,tafamidis
+1021,Vyvanse,lisdexamfetamine
+1022,Wakix,pitolisant
+1023,Wal-itin,loratadine
+1024,Wal-Profen,ibuprofen
+1025,Warfarin,warfarin (oral)
+1026,Wart Remover,salicylic acid topical
+1027,Wegovy,semaglutide
+1028,Welchol,colesevelam
+1029,Welireg,belzutifan
+1030,Wellbutrin,bupropion
+1031,Wellbutrin SR,bupropion
+1032,Wellbutrin XL,bupropion
+1033,Wezlana,ustekinumab-auub
+1034,Widaplik,"telmisartan, amlodipine, and indapamide"
+1035,Wilate,von Wille
+1037,Winlevi,clascoterone
+1038,Winrevair,sotatercept
+1039,Wyost,denosumab-bbdz
+1040,Xadago,safinamide
+1041,Xalatan,latanoprost ophthalmic
+1042,Xalkori,crizotinib
+1043,Xanax,alprazolam
+1044,Xanax XR,alprazolam
+1045,Xarelto,rivaroxaban
+1046,Xcopri,cenobamate
+1047,Xeljanz,tofacitinib
+1048,Xeloda,capecitabine
+1049,Xelpros,latanoprost ophthalmic
+1050,Xelstrym,dextroamphetamine
+1051,Xembify,immune globulin subcutaneous (human-klhw) 20%
+1052,Xenazine,tetrabenazine
+1053,Xenical,orlistat
+1054,Xeomin,incobotulinumtoxinA
+1055,Xermelo,telotristat ethyl
+1056,Xgeva,denosumab
+1058,Xifaxan,rifaximin
+1059,Xigduo XR,dapagliflozin and metformin
+1061,Xofluza,baloxavir marboxil
+1062,Xolair,omalizumab
+1063,Xolremdi,mavorixafor
+1064,Xopenex,levalbuterol inhalation
+1065,Xopenex HFA,levalbuterol inhalation
+1068,Xtandi,enzalutamide
+1069,Xulane,ethinyl estradiol and norelgestromin
+1070,Xultophy,insulin degludec and liraglutide
+1071,Xylocaine-MPF,lidocaine injection
+1072,Xyntha,antihemophilic factor (recombinant)
+1073,Xyosted Injection,testosterone injection
+1075,Xywav,"calcium oxybate, magnesium oxybate, potassium oxybate, and sodium oxybate"
+1076,Xyzal,levocetirizine
+1077,Yasmin,drospirenone and ethinyl estradiol
+1078,Yaz,drospirenone and ethinyl estradiol
+1080,Yellow fever vaccine,yellow fever vaccine
+1081,Yervoy,ipilimumab
+1082,Yescarta,axicabtagene ciloleucel
+1083,Yesintek,ustekinumab-kfce
+1085,YF-Vax,yellow fever vaccine
+1087,Yondelis,trabectedin
+1088,Yorvipath,palopegteriparatide
+1089,Yuflyma,adalimumab-aaty
+1090,Yupelri Inhalation,revefenacin (inhalation)
+1091,Yusimry,adalimumab-aqvh
+1093,Zaleplon,zaleplon
+1094,Zanaflex,tizanidine
+1095,Zantac,ranitidine
+1096,Zebeta,bisoprolol
+1097,Zegalogue,dasiglucagon
+1098,Zenpep,pancrelipase
+1099,Zepbound,tirzepatide
+1100,Zeposia,ozanimod
+1101,Zestril,lisinopril
+1102,Zetia,ezetimibe
+1103,Zilbrysq,zilucoplan
+1104,Zileuton,zileuton
+1105,Zinc,zinc sulfate
+1106,Zinc gluconate,zinc gluconate
+1108,Zinc sulfate,zinc sulfate
+1109,Ziprasidone,ziprasidone (oral/injection)
+1110,Zithromax,azithromycin
+1111,Zocor,simvastatin
+1112,Zofran,ondansetron (oral)
+1113,Zofran ODT,ondansetron (oral)
+1114,Zoladex,goserelin (implant)
+1115,Zoledronic acid,zoledronic acid
+1116,Zolmitriptan,zolmitriptan (oral)
+1117,Zoloft,sertraline
+1118,Zolpidem,zolpidem
+1119,Zometa,zoledronic acid
+1120,Zomig,zolmitriptan (oral)
+1121,Zonisamide,zonisamide
+1123,Zoryve,roflumilast topical
+1124,Zosyn,piperacillin and tazobactam
+1125,Zovirax,acyclovir (oral)
+1126,Zyban,bupropion
+1127,Zydelig,idelalisib
+1128,Zykadia,ceritinib
+1130,Zyprexa,Olanzapine
+1131,Zyrtec,cetirizine
+1132,Zytiga,abiraterone
+1133,Zyvox,linezolid (oral/injection)
+1134,12 Hour Nasal,oxymetazoline nasal
+1135,12 Hour Nasal Decongestant,oxymetazoline nasal
+1137,4-Way,phenylephrine nasal
+1138,5-HTP,5-hydroxytryptophan
+1139,5-HTP Mood and Stress,5-hydroxytryptophan
+1140,5-hydroxytryptophan,5-hydroxytryptophan
+1142,8-Mop,methoxsalen (oral)

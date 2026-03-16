@@ -7,9 +7,9 @@ from pathlib import Path
 from tqdm import tqdm
 from sklearn.metrics import roc_auc_score, average_precision_score
 
-from src.models.gnn import GCNLinkPredictor
+from src.models.gnn import GNNLinkPredictor
 
-MODEL_VERSION = 2
+MODEL_VERSION = 3
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / f"src/models/gnn_model_v{MODEL_VERSION}.pt"
 
@@ -36,7 +36,6 @@ def load_graph_data():
         df["target_id"] = df["target_id"].map(node_id_map)
 
     num_nodes = len(node_id_map)
-
     train_edge_index = torch.tensor(train_edges_df[["source_id","target_id"]].values.T, dtype=torch.long)
     val_edge_index = torch.tensor(val_edges_df[["source_id","target_id"]].values.T, dtype=torch.long)
 
@@ -66,17 +65,17 @@ def evaluate(model, edge_index, node_features, num_nodes, neg_ratio):
         edge_pairs, labels = prepare_edge_batch(edge_index, num_nodes, neg_ratio, DEVICE)
         node_emb = model(node_features.to(DEVICE), edge_index.to(DEVICE))
         preds = model.predict_edge(node_emb, edge_pairs)
-        roc_auc = roc_auc_score(labels.cpu(), preds.cpu())
-        pr_auc = average_precision_score(labels.cpu(), preds.cpu())
+        roc_auc = roc_auc_score(labels.cpu(), torch.sigmoid(preds).cpu())
+        pr_auc = average_precision_score(labels.cpu(), torch.sigmoid(preds).cpu())
     return roc_auc, pr_auc
 
 def train():
     num_nodes, train_edge_index, val_edge_index, node_features = load_graph_data()
     print(f"Num nodes: {num_nodes}, Num train edges: {train_edge_index.size(1)}, Feature dim: {node_features.size(1)}")
 
-    model = GCNLinkPredictor(node_features.size(1), hidden_dim=HIDDEN_DIM, num_layers=NUM_LAYERS, dropout=DROPOUT).to(DEVICE)
-    optimizer = optim.Adam(model.parameters(), lr=LR)
-    criterion = nn.BCELoss()
+    model = GNNLinkPredictor(node_features.size(1), hidden_dim=HIDDEN_DIM, num_layers=NUM_LAYERS, dropout=DROPOUT).to(DEVICE)
+    optimizer = optim.AdamW(model.parameters(), lr=LR, weight_decay=1e-5)
+    criterion = nn.BCEWithLogitsLoss()
     best_val_auc = 0
 
     for epoch in tqdm(range(1, EPOCHS+1)):

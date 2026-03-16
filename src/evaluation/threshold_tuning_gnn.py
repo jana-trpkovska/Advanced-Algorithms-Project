@@ -5,9 +5,9 @@ from torch_geometric.utils import negative_sampling, to_undirected
 from sklearn.metrics import precision_score, recall_score, f1_score
 import numpy as np
 
-from src.models.gnn import GCNLinkPredictor
+from src.models.gnn import GNNLinkPredictor
 
-MODEL_VERSION = 2
+MODEL_VERSION = 3
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / "src" / "models" / f"gnn_model_v{MODEL_VERSION}.pt"
 
@@ -76,7 +76,7 @@ def tune_threshold(num_steps=500):
         f"Feature dim: {node_features.size(1)}"
     )
 
-    model = GCNLinkPredictor(
+    model = GNNLinkPredictor(
         in_dim=node_features.size(1),
         hidden_dim=HIDDEN_DIM,
         num_layers=NUM_LAYERS,

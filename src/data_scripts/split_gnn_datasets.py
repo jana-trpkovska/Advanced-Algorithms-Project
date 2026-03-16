@@ -15,25 +15,21 @@ def main():
 
     edges_df = pd.read_csv(edges_csv)
 
-    # Shuffle edges
     edges_df = edges_df.sample(frac=1, random_state=RANDOM_SEED).reset_index(drop=True)
 
-    # Split into train and temp (val+test)
     train_edges, temp_edges = train_test_split(
         edges_df,
         test_size=(1 - TRAIN_RATIO),
         random_state=RANDOM_SEED
     )
 
-    # Split temp into val and test
-    val_size = VAL_RATIO / (VAL_RATIO + TEST_RATIO)  # proportion in temp
+    val_size = VAL_RATIO / (VAL_RATIO + TEST_RATIO)
     val_edges, test_edges = train_test_split(
         temp_edges,
         test_size=(1 - val_size),
         random_state=RANDOM_SEED
     )
 
-    # Ensure all nodes in val/test exist in train
     train_nodes = set(train_edges["source_id"]).union(train_edges["target_id"])
 
     def filter_edges(df):
@@ -44,7 +40,6 @@ def main():
     val_edges = filter_edges(val_edges)
     test_edges = filter_edges(test_edges)
 
-    # Save CSVs
     train_edges.to_csv(output_dir / "train_edges.csv", index=False)
     val_edges.to_csv(output_dir / "val_edges.csv", index=False)
     test_edges.to_csv(output_dir / "test_edges.csv", index=False)

@@ -6,13 +6,13 @@ from sklearn.metrics import roc_auc_score, average_precision_score, precision_sc
 
 from src.models.gnn import GNNLinkPredictor
 
-MODEL_VERSION = 6
+MODEL_VERSION = 7
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / f"src/models/gnn_model_v{MODEL_VERSION}.pt"
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 NEG_RATIO = 1.0
-THRESHOLD = 0.3 # after threshold tuning
+THRESHOLD = 0.3715 # after threshold tuning
 
 def load_graph_data():
     nodes_df = pd.read_csv(BASE_DIR / "data/datasets/gnn/nodes.csv")
@@ -26,11 +26,10 @@ def load_graph_data():
     node_features = torch.tensor(nodes_df.drop("Drug ID", axis=1).values, dtype=torch.float)
     return len(node_id_map), test_edge_index, node_features
 
-def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device):
+def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device, hard_ratio=0.7, topk=20):
     num_pos = edge_index.size(1)
     num_neg = int(num_pos * neg_ratio)
-
-    num_hard = num_neg // 2
+    num_hard = int(num_neg * hard_ratio)
     num_random = num_neg - num_hard
     pos_edge_pairs = edge_index.T
 
@@ -44,7 +43,7 @@ def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device):
         for i in range(edge_index.size(1))
     )
 
-    neg_edges = []
+    neg_edges = set()
     attempts = 0
     max_attempts = num_hard * 10
 
@@ -52,15 +51,15 @@ def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device):
         attempts += 1
         src = torch.randint(0, num_nodes, (1,)).item()
         sim_scores = similarity[src]
-        topk = torch.topk(sim_scores, k=20).indices.tolist()
-        dst = topk[torch.randint(1, len(topk), (1,)).item()]
+        topk_nodes = torch.topk(sim_scores, k=topk).indices.tolist()
+        dst = topk_nodes[torch.randint(1, len(topk_nodes), (1,)).item()]
 
         if src == dst:
             continue
         if (src, dst) in existing_edges or (dst, src) in existing_edges:
             continue
 
-        neg_edges.append((src, dst))
+        neg_edges.add((src, dst))
 
     attempts = 0
     max_attempts = num_random * 10
@@ -75,13 +74,18 @@ def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device):
         if (src, dst) in existing_edges or (dst, src) in existing_edges:
             continue
 
-        neg_edges.append((src, dst))
+        neg_edges.add((src, dst))
+
+    neg_edges = list(neg_edges)
+
+    if len(neg_edges) < num_neg:
+        print(f"Warning: Only generated {len(neg_edges)} negatives out of {num_neg}")
 
     neg_edge_pairs = torch.tensor(neg_edges, dtype=torch.long)
     edge_pairs = torch.cat([pos_edge_pairs, neg_edge_pairs], dim=0).to(device)
     labels = torch.cat([
         torch.ones(num_pos),
-        torch.zeros(len(neg_edges))
+        torch.zeros(len(neg_edge_pairs))
     ]).to(device)
     return edge_pairs, labels
 

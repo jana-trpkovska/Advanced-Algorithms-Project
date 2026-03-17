@@ -6,7 +6,7 @@ from sklearn.metrics import roc_auc_score, average_precision_score, precision_sc
 
 from src.models.gnn import GNNLinkPredictor
 
-MODEL_VERSION = 3
+MODEL_VERSION = 4
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / f"src/models/gnn_model_v{MODEL_VERSION}.pt"
 

@@ -7,7 +7,7 @@ import numpy as np
 
 from src.models.gnn import GNNLinkPredictor
 
-MODEL_VERSION = 3
+MODEL_VERSION = 4
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / "src" / "models" / f"gnn_model_v{MODEL_VERSION}.pt"
 
@@ -108,7 +108,7 @@ def tune_threshold(num_steps=500):
         best_precision = 0
         best_recall = 0
 
-        thresholds = np.linspace(0.0, 1.0, num_steps)
+        thresholds = np.linspace(0.3, 0.71, num_steps)
 
         for t in thresholds:
 

@@ -1,13 +1,13 @@
 import torch
 import pandas as pd
 from pathlib import Path
-from torch_geometric.utils import negative_sampling, to_undirected
+from torch_geometric.utils import to_undirected
 from sklearn.metrics import precision_score, recall_score, f1_score
 import numpy as np
 
 from src.models.gnn import GNNLinkPredictor
 
-MODEL_VERSION = 4
+MODEL_VERSION = 5
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / "src" / "models" / f"gnn_model_v{MODEL_VERSION}.pt"
 
@@ -45,24 +45,45 @@ def load_graph_data():
     return len(node_id_map), val_edge_index, node_features
 
 
-def prepare_edge_batch(edge_index, num_nodes, neg_ratio, device):
+def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device):
+    num_pos = edge_index.size(1)
+    num_neg = int(num_pos * neg_ratio)
+    pos_edge_pairs = edge_index.T
 
-    num_neg = int(edge_index.size(1) * neg_ratio)
+    with torch.no_grad():
+        x = node_features.to(device)
+        x_norm = x / (x.norm(dim=1, keepdim=True) + 1e-8)
+        similarity = torch.mm(x_norm, x_norm.T)
 
-    neg_edge_index = negative_sampling(
-        edge_index,
-        num_nodes=num_nodes,
-        num_neg_samples=num_neg,
-        method="sparse"
+    existing_edges = set(
+        (int(edge_index[0, i]), int(edge_index[1, i]))
+        for i in range(edge_index.size(1))
     )
 
-    edge_pairs = torch.cat([edge_index, neg_edge_index], dim=1).T.to(device)
+    neg_edges = []
+    attempts = 0
+    max_attempts = num_neg * 10
 
+    while len(neg_edges) < num_neg and attempts < max_attempts:
+        attempts += 1
+        src = torch.randint(0, num_nodes, (1,)).item()
+        sim_scores = similarity[src]
+        topk = torch.topk(sim_scores, k=20).indices.tolist()
+        dst = topk[torch.randint(1, len(topk), (1,)).item()]
+
+        if src == dst:
+            continue
+        if (src, dst) in existing_edges or (dst, src) in existing_edges:
+            continue
+
+        neg_edges.append((src, dst))
+
+    neg_edge_pairs = torch.tensor(neg_edges, dtype=torch.long)
+    edge_pairs = torch.cat([pos_edge_pairs, neg_edge_pairs], dim=0).to(device)
     labels = torch.cat([
-        torch.ones(edge_index.size(1)),
-        torch.zeros(neg_edge_index.size(1))
+        torch.ones(num_pos),
+        torch.zeros(len(neg_edges))
     ]).to(device)
-
     return edge_pairs, labels
 
 
@@ -90,6 +111,7 @@ def tune_threshold(num_steps=500):
 
         edge_pairs, labels = prepare_edge_batch(
             val_edge_index,
+            node_features,
             num_nodes,
             NEG_RATIO,
             DEVICE

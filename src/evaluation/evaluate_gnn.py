@@ -1,18 +1,18 @@
 import torch
 import pandas as pd
 from pathlib import Path
-from torch_geometric.utils import negative_sampling, to_undirected
+from torch_geometric.utils import to_undirected
 from sklearn.metrics import roc_auc_score, average_precision_score, precision_score, recall_score, f1_score
 
 from src.models.gnn import GNNLinkPredictor
 
-MODEL_VERSION = 4
+MODEL_VERSION = 5
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / f"src/models/gnn_model_v{MODEL_VERSION}.pt"
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 NEG_RATIO = 1.0
-THRESHOLD = 0.5
+THRESHOLD = 0.3222 # after threshold tuning
 
 def load_graph_data():
     nodes_df = pd.read_csv(BASE_DIR / "data/datasets/gnn/nodes.csv")
@@ -26,11 +26,45 @@ def load_graph_data():
     node_features = torch.tensor(nodes_df.drop("Drug ID", axis=1).values, dtype=torch.float)
     return len(node_id_map), test_edge_index, node_features
 
-def prepare_edge_batch(edge_index, num_nodes, neg_ratio, device):
-    num_neg = int(edge_index.size(1) * neg_ratio)
-    neg_edge_index = negative_sampling(edge_index, num_nodes=num_nodes, num_neg_samples=num_neg)
-    edge_pairs = torch.cat([edge_index, neg_edge_index], dim=1).T.to(device)
-    labels = torch.cat([torch.ones(edge_index.size(1)), torch.zeros(neg_edge_index.size(1))]).to(device)
+def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device):
+    num_pos = edge_index.size(1)
+    num_neg = int(num_pos * neg_ratio)
+    pos_edge_pairs = edge_index.T
+
+    with torch.no_grad():
+        x = node_features.to(device)
+        x_norm = x / (x.norm(dim=1, keepdim=True) + 1e-8)
+        similarity = torch.mm(x_norm, x_norm.T)
+
+    existing_edges = set(
+        (int(edge_index[0, i]), int(edge_index[1, i]))
+        for i in range(edge_index.size(1))
+    )
+
+    neg_edges = []
+    attempts = 0
+    max_attempts = num_neg * 10
+
+    while len(neg_edges) < num_neg and attempts < max_attempts:
+        attempts += 1
+        src = torch.randint(0, num_nodes, (1,)).item()
+        sim_scores = similarity[src]
+        topk = torch.topk(sim_scores, k=20).indices.tolist()
+        dst = topk[torch.randint(1, len(topk), (1,)).item()]
+
+        if src == dst:
+            continue
+        if (src, dst) in existing_edges or (dst, src) in existing_edges:
+            continue
+
+        neg_edges.append((src, dst))
+
+    neg_edge_pairs = torch.tensor(neg_edges, dtype=torch.long)
+    edge_pairs = torch.cat([pos_edge_pairs, neg_edge_pairs], dim=0).to(device)
+    labels = torch.cat([
+        torch.ones(num_pos),
+        torch.zeros(len(neg_edges))
+    ]).to(device)
     return edge_pairs, labels
 
 def evaluate():
@@ -42,7 +76,7 @@ def evaluate():
     model.eval()
 
     with torch.no_grad():
-        edge_pairs, labels = prepare_edge_batch(test_edge_index, num_nodes, NEG_RATIO, DEVICE)
+        edge_pairs, labels = prepare_edge_batch(test_edge_index, node_features, num_nodes, NEG_RATIO, DEVICE)
         node_emb = model(node_features.to(DEVICE), test_edge_index.to(DEVICE))
         logits = model.predict_edge(node_emb, edge_pairs)
         probs = torch.sigmoid(logits)

@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch_geometric.nn import SAGEConv  # GraphSAGE
+from torch_geometric.nn import SAGEConv
 
 class GNNLinkPredictor(nn.Module):
     """
@@ -35,4 +35,4 @@ class GNNLinkPredictor(nn.Module):
         src_emb = node_emb[src]
         dst_emb = node_emb[dst]
         edge_input = torch.cat([src_emb, dst_emb], dim=1)
-        return self.edge_mlp(edge_input).squeeze()  # raw logits
+        return self.edge_mlp(edge_input).squeeze()

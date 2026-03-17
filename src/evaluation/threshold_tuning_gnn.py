@@ -7,7 +7,7 @@ import numpy as np
 
 from src.models.gnn import GNNLinkPredictor
 
-MODEL_VERSION = 7
+MODEL_VERSION = 5
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / "src" / "models" / f"gnn_model_v{MODEL_VERSION}.pt"
 
@@ -45,11 +45,9 @@ def load_graph_data():
     return len(node_id_map), val_edge_index, node_features
 
 
-def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device, hard_ratio=0.7, topk=20):
+def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device):
     num_pos = edge_index.size(1)
     num_neg = int(num_pos * neg_ratio)
-    num_hard = int(num_neg * hard_ratio)
-    num_random = num_neg - num_hard
     pos_edge_pairs = edge_index.T
 
     with torch.no_grad():
@@ -62,49 +60,29 @@ def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device, 
         for i in range(edge_index.size(1))
     )
 
-    neg_edges = set()
+    neg_edges = []
     attempts = 0
-    max_attempts = num_hard * 10
-
-    while len(neg_edges) < num_hard and attempts < max_attempts:
-        attempts += 1
-        src = torch.randint(0, num_nodes, (1,)).item()
-        sim_scores = similarity[src]
-        topk_nodes = torch.topk(sim_scores, k=topk).indices.tolist()
-        dst = topk_nodes[torch.randint(1, len(topk_nodes), (1,)).item()]
-
-        if src == dst:
-            continue
-        if (src, dst) in existing_edges or (dst, src) in existing_edges:
-            continue
-
-        neg_edges.add((src, dst))
-
-    attempts = 0
-    max_attempts = num_random * 10
+    max_attempts = num_neg * 10
 
     while len(neg_edges) < num_neg and attempts < max_attempts:
         attempts += 1
         src = torch.randint(0, num_nodes, (1,)).item()
-        dst = torch.randint(0, num_nodes, (1,)).item()
+        sim_scores = similarity[src]
+        topk = torch.topk(sim_scores, k=20).indices.tolist()
+        dst = topk[torch.randint(1, len(topk), (1,)).item()]
 
         if src == dst:
             continue
         if (src, dst) in existing_edges or (dst, src) in existing_edges:
             continue
 
-        neg_edges.add((src, dst))
-
-    neg_edges = list(neg_edges)
-
-    if len(neg_edges) < num_neg:
-        print(f"Warning: Only generated {len(neg_edges)} negatives out of {num_neg}")
+        neg_edges.append((src, dst))
 
     neg_edge_pairs = torch.tensor(neg_edges, dtype=torch.long)
     edge_pairs = torch.cat([pos_edge_pairs, neg_edge_pairs], dim=0).to(device)
     labels = torch.cat([
         torch.ones(num_pos),
-        torch.zeros(len(neg_edge_pairs))
+        torch.zeros(len(neg_edges))
     ]).to(device)
     return edge_pairs, labels
 

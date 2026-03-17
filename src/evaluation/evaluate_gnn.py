@@ -6,13 +6,13 @@ from sklearn.metrics import roc_auc_score, average_precision_score, precision_sc
 
 from src.models.gnn import GNNLinkPredictor
 
-MODEL_VERSION = 5
+MODEL_VERSION = 6
 BASE_DIR = Path(__file__).resolve().parents[2]
 MODEL_PATH = BASE_DIR / f"src/models/gnn_model_v{MODEL_VERSION}.pt"
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 NEG_RATIO = 1.0
-THRESHOLD = 0.3222 # after threshold tuning
+THRESHOLD = 0.3 # after threshold tuning
 
 def load_graph_data():
     nodes_df = pd.read_csv(BASE_DIR / "data/datasets/gnn/nodes.csv")
@@ -29,6 +29,9 @@ def load_graph_data():
 def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device):
     num_pos = edge_index.size(1)
     num_neg = int(num_pos * neg_ratio)
+
+    num_hard = num_neg // 2
+    num_random = num_neg - num_hard
     pos_edge_pairs = edge_index.T
 
     with torch.no_grad():
@@ -43,14 +46,29 @@ def prepare_edge_batch(edge_index, node_features, num_nodes, neg_ratio, device):
 
     neg_edges = []
     attempts = 0
-    max_attempts = num_neg * 10
+    max_attempts = num_hard * 10
 
-    while len(neg_edges) < num_neg and attempts < max_attempts:
+    while len(neg_edges) < num_hard and attempts < max_attempts:
         attempts += 1
         src = torch.randint(0, num_nodes, (1,)).item()
         sim_scores = similarity[src]
         topk = torch.topk(sim_scores, k=20).indices.tolist()
         dst = topk[torch.randint(1, len(topk), (1,)).item()]
+
+        if src == dst:
+            continue
+        if (src, dst) in existing_edges or (dst, src) in existing_edges:
+            continue
+
+        neg_edges.append((src, dst))
+
+    attempts = 0
+    max_attempts = num_random * 10
+
+    while len(neg_edges) < num_neg and attempts < max_attempts:
+        attempts += 1
+        src = torch.randint(0, num_nodes, (1,)).item()
+        dst = torch.randint(0, num_nodes, (1,)).item()
 
         if src == dst:
             continue
